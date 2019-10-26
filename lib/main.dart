@@ -11,6 +11,9 @@ import 'package:csv/csv.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
+import 'suggestion_widget.dart';
+
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -54,13 +57,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    rootBundle.loadString('data/products2.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\n').convert(output);
-      print(_csv);
+    rootBundle.loadString('data/products.csv').then((dynamic output) {
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\r\n').convert(output);
+      for(List<dynamic> x in _csv) {
+        print(x);
+      }
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p = new ProductCarbonData(_csv[i][0], _csv[i][1], _csv[i][2]);
+
+          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
           _products[_csv[i][0]] = p;
+          if (!_categories.containsKey(_csv[i][1])) {
+            _categories[_csv[i][1]] = new List<String>();
+          }
+          _categories[_csv[i][1]].add(_csv[i][0]);
         }
       });
       _createProductWidgets();
@@ -79,6 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _handleSubmitted(String text) {
     //get list of suggestions like this
     List<Suggestion> suggs = getSuggestions("Butter", _products, _categories[_products["Butter"].productCategory]);
+
     _textController.clear();
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
@@ -201,8 +212,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new TextField(
               controller: _textController,
               onSubmitted: _handleSubmitted,
-              decoration:
-                  new InputDecoration.collapsed(hintText: "Produkt hinzufügen"),
+              decoration: new InputDecoration.collapsed(
+                  hintText: "Produkt hinzufügen"),
             ),
           ),
           new Container(
