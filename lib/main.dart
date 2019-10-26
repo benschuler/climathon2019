@@ -11,6 +11,8 @@ import 'package:csv/csv.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
+import 'suggestion_widget.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -40,7 +42,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
-  final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  //final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  final List<SuggestionWidget> _items = <SuggestionWidget>[];
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
   List<ProductListWidget> _productWidgets = <ProductListWidget>[];
@@ -77,7 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void _handleSubmitted(String text) {
     _textController.clear();
     if (_products.containsKey(text)) {
-      ShoppingListItemWidget item = new ShoppingListItemWidget(text);
+      //ShoppingListItemWidget item = new ShoppingListItemWidget(text);
+      SuggestionWidget item = new SuggestionWidget(text);
     setState(() {
       int pos = _items.length;
       _items.insert(pos, item);
