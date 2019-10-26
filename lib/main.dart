@@ -10,7 +10,6 @@ import 'package:csv/csv.dart';
 import 'dart:async' show Future;
 import 'package:flutter/services.dart' show rootBundle;
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -40,6 +39,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  int _selectedIndex = 0;
+
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
 
@@ -51,11 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ';').convert(output);
+      List<List<dynamic>> _csv =
+          const CsvToListConverter(fieldDelimiter: ';').convert(output);
       print(_csv);
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p = new ProductCarbonData(_csv[i][1], _csv[i][2], _csv[i][3]);
+          ProductCarbonData p =
+              new ProductCarbonData(_csv[i][1], _csv[i][2], _csv[i][3]);
           _products[_csv[i][0]] = p;
         }
       });
@@ -66,13 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
     _textController.clear();
     if (text == ' ') {
       _textController.text = 'Kaputt';
-    }
-    else {
+    } else {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
-    setState(() {
-      int pos = _items.length;
-      _items.insert(pos, item);
-    });
+      setState(() {
+        int pos = _items.length;
+        _items.insert(pos, item);
+      });
     }
   }
 
@@ -83,35 +85,67 @@ class _MyHomePageState extends State<MyHomePage> {
       return new Container();
     }
 
-    return new Scaffold(
-      appBar: new AppBar(title: new Text("Foodabdruck"),
-          actions: <Widget>[      // Add 3 lines from here...
-          IconButton(icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
-          ],                      // ... to here.
-      ),
-      body: new Column(
-        children: <Widget>[
-          new Container(
-            decoration: new BoxDecoration(
-                color: Theme.of(context).cardColor),
-            child: _buildTextComposer(),
+    var page1 = Column(
+      children: <Widget>[
+        new Container(
+          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+          child: _buildTextComposer(),
+        ),
+        new Divider(height: 1.0),
+        new Flexible(
+          child: new ListView.builder(
+            padding: new EdgeInsets.all(8.0),
+            itemBuilder: (_, int index) => _items[index],
+            itemCount: _items.length,
           ),
-          new Divider(height: 1.0),
-          new Flexible(
-            child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              itemBuilder: (_, int index) => _items[index],
-              itemCount: _items.length,
-            ),
+        ),
+      ],
+    );
+
+    var page2 = Text("Demo");
+
+    List<Widget> _pages = new List();
+    _pages.add(page1);
+    _pages.add(page2);
+
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Foodabdruck"),
+        actions: <Widget>[
+          // Add 3 lines from here...
+          IconButton(
+              icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
+        ], // ... to here.
+      ),
+      body: _pages.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: Text('Einkaufsliste'),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            title: Text('Produkte'),
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   void _pushSaved() {
     Navigator.of(context).push(
-      MaterialPageRoute<void>(   // Add 20 lines from here...
+      MaterialPageRoute<void>(
+        // Add 20 lines from here...
         builder: (BuildContext context) {
 //          final Iterable<ListTile> tiles = _saved.map(
 //                (WordPair pair) {
@@ -130,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //          )
 //              .toList();
         },
-      ),                       // ... to here.
+      ), // ... to here.
     );
   }
 
@@ -144,8 +178,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new TextField(
               controller: _textController,
               onSubmitted: _handleSubmitted,
-              decoration: new InputDecoration.collapsed(
-                  hintText: "Produkt hinzufügen"),
+              decoration:
+                  new InputDecoration.collapsed(hintText: "Produkt hinzufügen"),
             ),
           ),
           new Container(
@@ -159,4 +193,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
