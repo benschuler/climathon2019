@@ -52,7 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Friendlychat")),
+      appBar: new AppBar(title: new Text("Foodabdruck"),
+          actions: <Widget>[      // Add 3 lines from here...
+          IconButton(icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
+          ],                      // ... to here.
+      ),
       body: new Column(
         children: <Widget>[
           new Container(
@@ -70,6 +74,31 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+    );
+  }
+
+  void _pushSaved() {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(   // Add 20 lines from here...
+        builder: (BuildContext context) {
+//          final Iterable<ListTile> tiles = _saved.map(
+//                (WordPair pair) {
+//              return ListTile(
+//                title: Text(
+//                  pair.asPascalCase,
+//                  style: _biggerFont,
+//                ),
+//              );
+//            },
+//          );
+//          final List<Widget> divided = ListTile
+//              .divideTiles(
+//            context: context,
+//            tiles: tiles,
+//          )
+//              .toList();
+        },
+      ),                       // ... to here.
     );
   }
 
