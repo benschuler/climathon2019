@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'models.dart';
 import 'shopping_list_item.dart';
 
 void main() => runApp(MyApp());
@@ -46,6 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _handleSubmitted(String text) {
     _textController.clear();
+    var myProduct = Product();
+    if(text == myProduct.name) {
+      text = "Gurken";
+    }
     ShoppingListItem item = new ShoppingListItem(
       text: text,
     );
@@ -86,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: _items.length,
             ),
           ),
+          new MaterialButton(onPressed: () => _analyze(), child: Text('Auswerten')),
           new Divider(height: 1.0),
           new Container(
             decoration: new BoxDecoration(
@@ -95,6 +101,23 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
     );
+  }
+  void _analyze() {
+    setState(() {
+      var proposals = List<String>();
+      var productList = new ProductList();
+      for(final ShoppingListItem item in _items){
+        if(!productList.isProductInSeason(item.text)) {
+          proposals.add(item.text + " ist außer Saison!");
+        }
+      }
+      _items.clear();
+      for(final proposal in proposals) {
+        var myItem = new ShoppingListItem(text: proposal);
+        _items.insert(0, myItem);
+      }
+          
+    });
   }
 
   // Widget for text input
