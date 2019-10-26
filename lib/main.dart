@@ -54,7 +54,8 @@ class _MyHomePageState extends State<MyHomePage> {
       text: text,
     );
     setState(() {
-      _items.insert(0, item);
+      int pos = _items.length;
+      _items.insert(pos, item);
     });
     }
   }
@@ -83,19 +84,19 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(title: new Text("Friendlychat")),
       body: new Column(
         children: <Widget>[
-          new Flexible(
-            child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              reverse: true,
-              itemBuilder: (_, int index) => _items[index],
-              itemCount: _items.length,
-            ),
-          ),
-          new Divider(height: 1.0),
           new Container(
             decoration: new BoxDecoration(
                 color: Theme.of(context).cardColor),
             child: _buildTextComposer(),
+          ),
+          new Divider(height: 1.0),
+          new Flexible(
+            child: new ListView.builder(
+              padding: new EdgeInsets.all(8.0),
+              reverse: false,
+              itemBuilder: (_, int index) => _items[index],
+              itemCount: _items.length,
+            ),
           ),
         ],
       ),
