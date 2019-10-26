@@ -46,6 +46,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  // Some controllers to control UI elements
+  final TextEditingController _textController = new TextEditingController();
+
+  void _handleSubmitted(String text) {
+    _textController.clear();
+  }
+
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -71,11 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: _createBody(),
+      body: _buildTextComposer(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
-        child: Icon(Icons.add),
+        child: Icon(Icons.shopping_basket),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
@@ -108,6 +116,31 @@ class _MyHomePageState extends State<MyHomePage> {
             '$_counter',
             style: Theme.of(context).textTheme.display1,
           ),
+        ],
+      ),
+    );
+  }
+
+  // Widget for text input
+  Widget _buildTextComposer() {
+    return new Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: new Row(
+        children: <Widget>[
+          new Flexible(
+            child: new TextField(
+              controller: _textController,
+              onSubmitted: _handleSubmitted,
+              decoration: new InputDecoration.collapsed(
+                  hintText: "Produkt hinzufügen"),
+            ),
+          ),
+          new Container(                                                 //new
+            margin: new EdgeInsets.symmetric(horizontal: 4.0),           //new
+            child: new IconButton(                                       //new
+                icon: new Icon(Icons.add),                                //new
+                onPressed: () => _handleSubmitted(_textController.text)),  //new
+          ),                                                             //new
         ],
       ),
     );
