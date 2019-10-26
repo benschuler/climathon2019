@@ -44,6 +44,9 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   Map<String, List<String>> _categories = new HashMap();
+  int _selectedIndex = 0;
+
+  //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
   List<ProductListWidget> _productWidgets = <ProductListWidget>[];
 
@@ -110,43 +113,72 @@ class _MyHomePageState extends State<MyHomePage> {
       return new Container();
     }
 
+    var page1 = Column(
+      children: <Widget>[
+        new Container(
+          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+          child: _buildTextComposer(),
+        ),
+        new Divider(height: 1.0),
+        new Flexible(
+          child: new ListView.builder(
+            padding: new EdgeInsets.all(8.0),
+            itemBuilder: (_, int index) => _items[index],
+            itemCount: _items.length,
+          ),
+        ),
+        new Divider(height: 10.0),
+        new Container(
+          decoration: new BoxDecoration(
+              color: Theme.of(context).cardColor),
+          child: new Text("Vorschläge"),
+        ),
+
+      ],
+    );
+
+    var page2 =new ListView.builder(
+        padding: new EdgeInsets.all(8.0),
+        itemBuilder: (_, int index) => _productWidgets[index],
+        itemCount: _productWidgets.length,
+      );
+
+    List<Widget> _pages = new List();
+    _pages.add(page1);
+    _pages.add(page2);
+
     return new Scaffold(
-      appBar: new AppBar(title: new Text("Foodabdruck"),
-          actions: <Widget>[      // Add 3 lines from here...
-          IconButton(icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
-          ],                      // ... to here.
+      appBar: new AppBar(
+        title: new Text("Foodabdruck"),
+        actions: <Widget>[
+          // Add 3 lines from here...
+          IconButton(
+              icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
+        ], // ... to here.
       ),
-      body: new Column(
-        children: <Widget>[
-          new Container(
-            decoration: new BoxDecoration(
-                color: Theme.of(context).cardColor),
-            child: _buildTextComposer(),
+      body: _pages.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: Text('Einkaufsliste'),
           ),
-          new Divider(height: 1.0),
-          new Flexible(
-            child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              itemBuilder: (_, int index) => _items[index],
-              itemCount: _items.length,
-            ),
-          ),
-          new Divider(height: 10.0),
-          new Container(
-            decoration: new BoxDecoration(
-                color: Theme.of(context).cardColor),
-            child: new Text("Vorschläge"),
-          ),
-          new Flexible(
-            child: new ListView.builder(
-              padding: new EdgeInsets.all(8.0),
-              itemBuilder: (_, int index) => _productWidgets[index],
-              itemCount: _productWidgets.length,
-            ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            title: Text('Produkte'),
           ),
         ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
       ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   void _pushSaved() {
@@ -199,4 +231,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
