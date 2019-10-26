@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   List<ProductCarbonData> _products = <ProductCarbonData>[];
+  List<ProductWidget> _productWidgets = <ProductWidget>[];
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -57,7 +58,19 @@ class _MyHomePageState extends State<MyHomePage> {
           _products.add(p);
         }
       });
+      _createProductWidgets(_products);
     });
+  }
+
+  void _createProductWidgets(List<ProductCarbonData> productList){
+    ProductWidget myWidget;
+
+    for(int i = 0; i < productList.length - 1; i++) {
+      myWidget = new ProductWidget(productList[i]);
+      _productWidgets.add(myWidget);
+      print("Test Benjamin");
+      print(productList[i]);
+    }
   }
 
   void _handleSubmitted(String text) {
@@ -102,10 +115,24 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: _items.length,
             ),
           ),
+          new Divider(height: 10.0),
+          new Container(
+            decoration: new BoxDecoration(
+                color: Theme.of(context).cardColor),
+            child: new Text("Vorschläge"),
+          ),
+          new Flexible(
+            child: new ListView.builder(
+              padding: new EdgeInsets.all(8.0),
+              itemBuilder: (_, int index) => _productWidgets[index],
+              itemCount: _productWidgets.length,
+            ),
+          ),
         ],
       ),
     );
   }
+
 
   void _pushSaved() {
     Navigator.of(context).push(
