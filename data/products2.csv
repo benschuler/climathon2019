@@ -1,0 +1,222 @@
+Butter,Fette/Öle,0.92
+Butter und Margarine z.B Rama mit Butter,Fette/Öle,0.34
+Halbfettmargarine,Fette/Öle,0.11
+Olivenöl,Fette/Öle,0.31
+Palmfett zum Braten,Fette/Öle,0.14
+Pflanzencreme,Fette/Öle,0.02
+Rapsöl,Fette/Öle,0.27
+Sonnenblumenöl,Fette/Öle,0.22
+Veganes Streichfett,Fette/Öle,0.17
+Sesamöl,Fette/Öle,0.38
+Gemüsebrühe,Sonstiges,0.15
+Honig,Sonstiges,0.19
+Kokosmilch,Sonstiges,0.05
+Puderzucker,Sonstiges,0.05
+Rinderbrühe,Sonstiges,0.18
+Sojadrink,Sonstiges,0.07
+Zucker,Sonstiges,0.06
+Ananas (Dose),Obst,0.17
+Ananas (frisch),Obst,0.07
+Apfel,Obst,0.03
+Aprikosen (Dose),Obst,0.17
+Aprikosen (frisch),Obst,0.05
+Avocado,Obst,0.05
+Banane,Obst,0.06
+Birne,Obst,0.03
+Brombeeren,Obst,0.07
+Erdbeeren (TK),Obst,0.07
+Erdbeeren (frisch),Obst,0.03
+Feigen,Obst,0.09
+Granatapfel,Obst,0.04
+Heidelbeeren (TK),Obst,0.06
+Heidelbeeren (frisch),Obst,0.05
+Himbeere (gefroren),Obst,0.07
+Himbeere (frisch),Obst,0.12
+Kirschen,Obst,0.09
+Kiwi,Obst,0.07
+Mango,Obst,0.17
+Maracuja/ Passionsfrucht,Obst,0.23
+Nektarine,Obst,0.03
+Oliven,Obst,0.15
+Orange/Apfelsine,Obst,0.04
+Pfirsich,Obst,0.03
+Pfirsich (Dose),Obst,0.15
+Pflaume,Obst,0.02
+Rosinen,Obst,0.09
+Stachelbeeren,Obst,0.07
+Wassermelone,Obst,0.04
+Weintrauben,Obst,0.04
+Zitrone,Obst,0.04
+Limette,Obst,0.17
+Bohnen,Hülsenfrüchte/Samen/Nüsse,0.07
+Bohnen (Dose),Hülsenfrüchte/Samen/Nüsse,0.12
+Erbsen (grün),Hülsenfrüchte/Samen/Nüsse,0.08
+Erbsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.12
+Erdnüsse (ganz),Hülsenfrüchte/Samen/Nüsse,0.07
+Kichererbsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.13
+Leinsamen,Hülsenfrüchte/Samen/Nüsse,0.12
+Linsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.15
+Linsen (getrocknet),Hülsenfrüchte/Samen/Nüsse,0.06
+Tofu,Hülsenfrüchte/Samen/Nüsse,0.17
+Pinienkerne,Hülsenfrüchte/Samen/Nüsse,0.21
+Mandeln,Hülsenfrüchte/Samen/Nüsse,0.21
+Walnüsse,Hülsenfrüchte/Samen/Nüsse,0.1
+Pistazien,Hülsenfrüchte/Samen/Nüsse,0.41
+Cashewnüsse,Hülsenfrüchte/Samen/Nüsse,0.31
+Sonnenblumenkerne,Hülsenfrüchte/Samen/Nüsse,0.09
+Haselnüsse,Hülsenfrüchte/Samen/Nüsse,0.25
+Buttermilch,Milchprodukte,0.12
+Creme Fraiche,Milchprodukte,0.42
+Fetakäse,Milchprodukte,0.65
+Frischkäse,Milchprodukte,0.15
+H-Milch,Milchprodukte,0.14
+Joghurt,Milchprodukte,0.24
+Joghurt (soja),Milchprodukte,0.09
+Kochcreme,Milchprodukte,0.09
+Käse,Milchprodukte,0.58
+Käse (bio),Milchprodukte,0.8
+Magerquark,Milchprodukte,0.25
+Milch,Milchprodukte,0.14
+Sojamilch,Milchprodukte,0.02
+Sojarahm,Milchprodukte,0.1
+Parmesan,Milchprodukte,0.94
+Doppelrahm (45%),Milchprodukte,0.67
+Rahm (35% Fett),Milchprodukte,0.59
+Mozarella,Milchprodukte,0.43
+Quark,Milchprodukte,0.34
+Sahne,Milchprodukte,0.43
+Sahne Alternative z.B. Rama Cremefine zum Aufschlagen,Milchprodukte,0.1
+Saure Sahne,Milchprodukte,0.3
+Schmand,Milchprodukte,0.37
+Brötchen (Vollkorn),Getreideprodukte,0.06
+Brötchen (Weißmehl),Getreideprodukte,0.06
+Bulgur,Getreideprodukte,0.05
+Couscous,Getreideprodukte,0.04
+Haferflocken,Getreideprodukte,0.04
+Hirse,Getreideprodukte,0.05
+Knäckebrot,Getreideprodukte,0.05
+Nudeln,Getreideprodukte,0.05
+Nudeln (Vollkorn),Getreideprodukte,0.04
+Reisnudeln,Getreideprodukte,0.33
+Quinoa,Getreideprodukte,0.07
+Reis,Getreideprodukte,0.3
+Toast,Getreideprodukte,0.05
+Toast (Vollkorn),Getreideprodukte,0.05
+Vollkornbrot,Getreideprodukte,0.06
+Weißbrot,Getreideprodukte,0.06
+Weizenmehl,Getreideprodukte,0.03
+Vollkornmehl,Getreideprodukte,0.05
+Sesam,Getreideprodukte,0.26
+Risotto,Getreideprodukte,0.22
+Aubergine,Gemüse/Pilze,0.03
+Blumenkohl,Gemüse/Pilze,0.04
+Brokkoli,Gemüse/Pilze,0.06
+Brokkoli (TK),Gemüse/Pilze,0.09
+Champignon (hell oder dunkel),Gemüse/Pilze,0.13
+Champignons (Dose),Gemüse/Pilze,0.26
+Eisbergsalat,Gemüse/Pilze,0.02
+Feldsalat,Gemüse/Pilze,0.03
+Kartoffeln,Gemüse/Pilze,0.04
+Fenchel,Gemüse/Pilze,0.02
+Grünkohl (Glas),Gemüse/Pilze,0.08
+Grünkohl (frisch),Gemüse/Pilze,0.04
+Gurke,Gemüse/Pilze,0.04
+Karotte/Möhre,Gemüse/Pilze,0.03
+Kirschtomaten,Gemüse/Pilze,0.09
+Kohlrabi,Gemüse/Pilze,0.04
+Kürbis,Gemüse/Pilze,0.02
+Lauch,Gemüse/Pilze,0.02
+Mais (Dose),Gemüse/Pilze,0.12
+Paprika,Gemüse/Pilze,0.06
+Rettich (Meerrettich),Gemüse/Pilze,0.02
+Rosenkohl (frisch),Gemüse/Pilze,0.03
+Rosenkohl (TK),Gemüse/Pilze,0.06
+Rote Beete (Glas),Gemüse/Pilze,0.14
+Rote Beete (frisch),Gemüse/Pilze,0.03
+Rotkohl (frisch),Gemüse/Pilze,0.04
+Rotkohl (Glas),Gemüse/Pilze,0.1
+Rucola,Gemüse/Pilze,0.03
+Salatmischung (gewaschen),Gemüse/Pilze,0.03
+Sellerie,Gemüse/Pilze,0.03
+Spargel (grün),Gemüse/Pilze,0.06
+Spargel (weiß),Gemüse/Pilze,0.06
+Spinat (TK),Gemüse/Pilze,0.06
+Spinat (frisch),Gemüse/Pilze,0.03
+Süßkartoffel,Gemüse/Pilze,0.04
+Tomate,Gemüse/Pilze,0.08
+Tomate (Dose),Gemüse/Pilze,0.19
+Tomate (Gewächshaus),Gemüse/Pilze,0.29
+Weißkohl,Gemüse/Pilze,0.04
+Wirsing,Gemüse/Pilze,0.03
+Zucchini,Gemüse/Pilze,0.03
+Zwiebeln,Gemüse/Pilze,0.03
+Frühlingszwiebel,Gemüse/Pilze,0.2
+Eier,Fleisch/ Geflügel/ Eier,0.2
+Eier (Bio),Fleisch/ Geflügel/ Eier,0.15
+Frikadellen,Fleisch/ Geflügel/ Eier,0.26
+Hackfleisch (gemischt),Fleisch/ Geflügel/ Eier,0.56
+Hähnchenfleisch TK,Fleisch/ Geflügel/ Eier,0.39
+Hähnchenfleisch (frisch),Fleisch/ Geflügel/ Eier,0.37
+Lamm,Fleisch/ Geflügel/ Eier,0.77
+Pute,Fleisch/ Geflügel/ Eier,0.42
+Rind,Fleisch/ Geflügel/ Eier,1.23
+Rind (Bio),Fleisch/ Geflügel/ Eier,1.14
+Rind (TK),Fleisch/ Geflügel/ Eier,1.43
+Schwein,Fleisch/ Geflügel/ Eier,0.42
+Schwein (TK),Fleisch/ Geflügel/ Eier,0.43
+Wild,Fleisch/ Geflügel/ Eier,1.05
+Wurst,Fleisch/ Geflügel/ Eier,0.36
+Würstchen,Fleisch/ Geflügel/ Eier,0.38
+Hamburger Patty,Fleisch/ Geflügel/ Eier,0.81
+Speck (geräuchert),Fleisch/ Geflügel/ Eier,0.6
+Fisch (frisch),Fisch/Meerestiere,0.63
+Fisch (TK),Fisch/Meerestiere,0.41
+Forelle,Fisch/Meerestiere,0.63
+Garnelen (TK),Fisch/Meerestiere,1.26
+Hering,Fisch/Meerestiere,0.63
+Kabeljau,Fisch/Meerestiere,0.63
+Lachs,Fisch/Meerestiere,0.63
+Makrele,Fisch/Meerestiere,0.63
+Muscheln,Fisch/Meerestiere,0.63
+Rotbarsch,Fisch/Meerestiere,0.63
+Pommes-frites TK,Fertigprodukte,0.57
+Feinbackwaren,Fertigprodukte,0.09
+Basilikum (getrocknet),Gewürze/Kräuter,0.35
+Thymian (getrocknet),Gewürze/Kräuter,0.35
+Muskat,Gewürze/Kräuter,0.25
+Paprikapulver,Gewürze/Kräuter,0.4
+Pfeffer,Gewürze/Kräuter,0.03
+Pfeffer (getrocknet),Gewürze/Kräuter,0.35
+Sojasauce,Gewürze/Kräuter,0.13
+Essig / Apfelessig,Gewürze/Kräuter,0.29
+Hefeextrakt,Gewürze/Kräuter,0.08
+Hefe,Gewürze/Kräuter,0.08
+Salz,Gewürze/Kräuter,0.03
+Zucker (Zuckerrüben),Gewürze/Kräuter,0.03
+Senf,Gewürze/Kräuter,0.07
+Knoblauch,Gewürze/Kräuter,0.04
+Zitronensaft,Gewürze/Kräuter,0.07
+Orangensaft,Gewürze/Kräuter,0.03
+Spirituosen,Gewürze/Kräuter,0.38
+Schokolade (dunkel),Fertigprodukte,0.21
+Nelken (getrocknet),Gewürze/Kräuter,0.32
+Zimt (getrocknet),Gewürze/Kräuter,0.35
+Basilikum,Gewürze/Kräuter,0.03
+Senfkörner,Gewürze/Kräuter,0.03
+Dill,Gewürze/Kräuter,0.04
+Oregano,Gewürze/Kräuter,0.02
+Rosmarin,Gewürze/Kräuter,0.02
+Currypaste (rot),Gewürze/Kräuter,0.09
+Ingwer,Gewürze/Kräuter,0.03
+Kreuzkümmel,Gewürze/Kräuter,0.03
+Cumin,Gewürze/Kräuter,0.03
+Zuckerrohr,Gewürze/Kräuter,0.01
+Petersilie,Gewürze/Kräuter,0.03
+Zitronengras,Gewürze/Kräuter,0.78
+Chili (getrocknet),Gewürze/Kräuter,0.35
+Kurkuma (getrocknet),Gewürze/Kräuter,0.35
+Lorbeer (getrocknet),Gewürze/Kräuter,0.33
+Koriander,Gewürze/Kräuter,0.29
+Tomatenkonzentrat,Gewürze/Kräuter,0.15
+Wein (rot),Getränke,0.14
+Wein (weiss),Getränke,0.14

@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  Map<String, List<String>> _categories = new HashMap();
   int _selectedIndex = 0;
 
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
@@ -53,13 +54,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ';', eol: '\n').convert(output);
+    rootBundle.loadString('data/products2.csv').then((dynamic output) {
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\n').convert(output);
       print(_csv);
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p =
-              new ProductCarbonData(_csv[i][1], _csv[i][2], _csv[i][3]);
+          ProductCarbonData p = new ProductCarbonData(_csv[i][0], _csv[i][1], _csv[i][2]);
           _products[_csv[i][0]] = p;
         }
       });
@@ -74,15 +74,11 @@ class _MyHomePageState extends State<MyHomePage> {
       myWidget = new ProductListWidget(p);
       _productWidgets.add(myWidget);
     }
-    /*for(int i = 0; i < productList.length - 1; i++) {
-      myWidget = new ProductListWidget(productList[i]);
-      _productWidgets.add(myWidget);
-      print("Test Benjamin");
-      print(productList[i]);
-    }*/
   }
 
   void _handleSubmitted(String text) {
+    //get list of suggestions like this
+    List<Suggestion> suggs = getSuggestions("Butter", _products, _categories[_products["Butter"].productCategory]);
     _textController.clear();
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
@@ -91,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _items.insert(pos, item);
     });
     } else {
-      _textController.text = 'Kaputt';
+      _textController.text = 'nicht gefunden';
     }
   }
 
@@ -172,9 +168,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _pushSaved() {
     Navigator.of(context).push(
-      MaterialPageRoute<void>(
-        // Add 20 lines from here...
-        builder: (BuildContext context) {
+      MaterialPageRoute<void>(   // Add 20 lines from here...
+//        builder: (BuildContext context) {
 //          final Iterable<ListTile> tiles = _saved.map(
 //                (WordPair pair) {
 //              return ListTile(
@@ -191,8 +186,8 @@ class _MyHomePageState extends State<MyHomePage> {
 //            tiles: tiles,
 //          )
 //              .toList();
-        },
-      ), // ... to here.
+//        },
+      ),                       // ... to here.
     );
   }
 
