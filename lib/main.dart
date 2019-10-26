@@ -87,7 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _items.insert(pos, item);
     });
     } else {
-      _textController.text = 'Kaputt';
+      _textController.text = 'nicht gefunden';
     }
   }
 
@@ -140,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _pushSaved() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(   // Add 20 lines from here...
-        builder: (BuildContext context) {
+//        builder: (BuildContext context) {
 //          final Iterable<ListTile> tiles = _saved.map(
 //                (WordPair pair) {
 //              return ListTile(
@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //            tiles: tiles,
 //          )
 //              .toList();
-        },
+//        },
       ),                       // ... to here.
     );
   }
