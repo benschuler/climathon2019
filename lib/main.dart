@@ -46,25 +46,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _handleSubmitted(String text) {
     _textController.clear();
+    if (text == ' ') {
+      _textController.text = 'Kaputt';
+    }
+    else {
     ShoppingListItem item = new ShoppingListItem(
       text: text,
     );
     setState(() {
       _items.insert(0, item);
     });
+    }
   }
 
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+//  void _incrementCounter() {
+//    setState(() {
+//      // This call to setState tells the Flutter framework that something has
+//      // changed in this State, which causes it to rerun the build method below
+//      // so that the display can reflect the updated values. If we changed
+//      // _counter without calling setState(), then the build method would not be
+//      // called again, and so nothing would appear to happen.
+//      _counter++;
+//    });
+//  }
 
   @override
   Widget build(BuildContext context) {
@@ -104,13 +109,9 @@ class _MyHomePageState extends State<MyHomePage> {
       child: new Row(
         children: <Widget>[
           new Flexible(
-            child: new TextFormField(
+            child: new TextField(
               controller: _textController,
-              // TODO: Implement validator here
-              validator: (value) {
-                return value;
-              },
-              onFieldSubmitted: _handleSubmitted,
+              onSubmitted: _handleSubmitted,
               decoration: new InputDecoration.collapsed(
                   hintText: "Produkt hinzufügen"),
             ),
