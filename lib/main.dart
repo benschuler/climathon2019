@@ -72,12 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
       myWidget = new ProductListWidget(p);
       _productWidgets.add(myWidget);
     }
-    /*for(int i = 0; i < productList.length - 1; i++) {
-      myWidget = new ProductListWidget(productList[i]);
-      _productWidgets.add(myWidget);
-      print("Test Benjamin");
-      print(productList[i]);
-    }*/
   }
 
   void _handleSubmitted(String text) {
