@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\r\n').convert(output);
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\n').convert(output);
       for(List<dynamic> x in _csv) {
         print(x);
       }
@@ -88,7 +88,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _handleSubmitted(String text) {
     //get list of suggestions like this
-    List<Suggestion> suggs = getSuggestions("Butter", _products, _categories[_products["Butter"].productCategory]);
+    List<String> inputProducts = <String>[];
+
+    inputProducts.add("Butter");
+    List<Suggestion> suggs = getSuggestions(inputProducts, _products, _categories);
 
     _textController.clear();
     if (_products.containsKey(text)) {
