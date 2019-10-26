@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
-  final List<ShoppingListItem> _items = <ShoppingListItem>[];
+  final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
 
   void _handleSubmitted(String text) {
     _textController.clear();
@@ -50,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _textController.text = 'Kaputt';
     }
     else {
-    ShoppingListItem item = new ShoppingListItem(
+      ShoppingListItemWidget item = new ShoppingListItemWidget(
       text: text,
     );
     setState(() {
