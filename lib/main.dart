@@ -1,7 +1,8 @@
+import 'dart:collection';
 import 'dart:core';
 
 import 'package:flutter/material.dart';
-import 'package:zero2app/product_carbon_data.dart';
+import 'package:zero2app/carbonHandler.dart';
 
 import 'shopping_list_item.dart';
 
@@ -39,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
-  List<ProductCarbonData> _products = <ProductCarbonData>[];
+  //List<ProductCarbonData> _products = <ProductCarbonData>[];
+  Map<String, ProductCarbonData> _products = new HashMap();
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -53,8 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
       print(_csv);
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p = new ProductCarbonData(_csv[i][0], _csv[i][1], _csv[i][2]);
-          _products.add(p);
+          ProductCarbonData p = new ProductCarbonData(_csv[i][1], _csv[i][2], _csv[i][3]);
+          _products[_csv[i][0]] = p;
         }
       });
     });
