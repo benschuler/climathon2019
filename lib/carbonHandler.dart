@@ -29,13 +29,17 @@ List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbon
   for (var j = 0; j < inS_list.length; j++) {
     String inS = inS_list[j];
     List<String> relatedProducts = categories[products[inS].productCategory];
+    List<Suggestion> p_suggs = <Suggestion>[];
     for (var i = 0; i < relatedProducts.length; i++) {
       String p = relatedProducts[i];
       if (products[inS].emissions > products[p].emissions) {
         Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
-        suggs.add(s);
+        p_suggs.add(s);
       }
     }
+    p_suggs.sort((a, b) => b.reducedEmissions.compareTo(a.reducedEmissions));
+    suggs.addAll(p_suggs.getRange(0, 3));
   }
+  suggs.sort((a, b) => b.reducedEmissions.compareTo(a.reducedEmissions));
   return suggs;
 }

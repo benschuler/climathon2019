@@ -91,8 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
     List<String> inputProducts = <String>[];
 
     inputProducts.add("Butter");
+    inputProducts.add("Mango");
     List<Suggestion> suggs = getSuggestions(inputProducts, _products, _categories);
-    print(suggs[0].reducedEmissions);
 
     _textController.clear();
     if (_products.containsKey(text)) {
