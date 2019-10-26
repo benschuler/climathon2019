@@ -4,6 +4,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:zero2app/carbonHandler.dart';
 
+import 'product_list_widget.dart';
 import 'shopping_list_item.dart';
 
 import 'package:csv/csv.dart';
@@ -43,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
+  List<ProductListWidget> _productWidgets = <ProductListWidget>[];
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -52,8 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv =
-          const CsvToListConverter(fieldDelimiter: ';').convert(output);
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ';', eol: '\n').convert(output);
       print(_csv);
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
@@ -62,19 +63,35 @@ class _MyHomePageState extends State<MyHomePage> {
           _products[_csv[i][0]] = p;
         }
       });
+      _createProductWidgets();
     });
+  }
+
+  void _createProductWidgets(){
+    ProductListWidget myWidget;
+
+    for(String p in _products.keys) {
+      myWidget = new ProductListWidget(p);
+      _productWidgets.add(myWidget);
+    }
+    /*for(int i = 0; i < productList.length - 1; i++) {
+      myWidget = new ProductListWidget(productList[i]);
+      _productWidgets.add(myWidget);
+      print("Test Benjamin");
+      print(productList[i]);
+    }*/
   }
 
   void _handleSubmitted(String text) {
     _textController.clear();
-    if (text == ' ') {
-      _textController.text = 'Kaputt';
-    } else {
+    if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
-      setState(() {
-        int pos = _items.length;
-        _items.insert(pos, item);
-      });
+    setState(() {
+      int pos = _items.length;
+      _items.insert(pos, item);
+    });
+    } else {
+      _textController.text = 'Kaputt';
     }
   }
 
@@ -99,10 +116,21 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: _items.length,
           ),
         ),
+        new Divider(height: 10.0),
+        new Container(
+          decoration: new BoxDecoration(
+              color: Theme.of(context).cardColor),
+          child: new Text("Vorschläge"),
+        ),
+
       ],
     );
 
-    var page2 = Text("Demo");
+    var page2 =new ListView.builder(
+        padding: new EdgeInsets.all(8.0),
+        itemBuilder: (_, int index) => _productWidgets[index],
+        itemCount: _productWidgets.length,
+      );
 
     List<Widget> _pages = new List();
     _pages.add(page1);
