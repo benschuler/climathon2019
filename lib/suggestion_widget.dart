@@ -6,7 +6,7 @@ class SuggestionWidget extends StatelessWidget {
   SuggestionEntry suggestionEntry;
 
   SuggestionWidget(String inText) {
-    suggestionEntry = new SuggestionEntry(inText, 80);
+    suggestionEntry = new SuggestionEntry(inText, 20);
   }
 
   @override
@@ -18,7 +18,10 @@ class SuggestionWidget extends StatelessWidget {
         children: <Widget>[
           new Container(
             margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text(suggestionEntry.savings.toString())),
+            child: new CircleAvatar(
+                backgroundColor: _determineColor(suggestionEntry.savings),
+                foregroundColor: Colors.black,
+                child: new Text(suggestionEntry.savings.toString())),
           ),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,6 +46,16 @@ class SuggestionWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _determineColor(double inSavings) {
+    if(inSavings > 100) {
+      return Colors.green;
+    } else if (inSavings > 50) {
+      return Colors.yellow;
+    } else {
+      return Colors.red;
+    }
   }
 
   _handleAdd() {
