@@ -1,13 +1,11 @@
-import 'product_category.dart';
-
 class ProductCarbonData {
   String product;
-  int carbonPer100G;
-  ProductCategory productCategory;
+  double emissions;
+  String productCategory;
 
-  ProductCarbonData(String inProduct, int inCarbon, ProductCategory inCategory) {
+  ProductCarbonData(String inProduct, double inEmissions, String inCategory) {
     this.product = inProduct;
-    this.carbonPer100G = inCarbon;
+    this.emissions = inEmissions;
     this.productCategory = inCategory;
   }
 

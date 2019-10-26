@@ -1,7 +1,14 @@
+import 'dart:core';
+
 import 'package:flutter/material.dart';
+import 'package:zero2app/product_carbon_data.dart';
 
 import 'shopping_list_item.dart';
-import 'carbon_csv_loader.dart';
+
+import 'package:csv/csv.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+
 
 void main() => runApp(MyApp());
 
@@ -9,7 +16,6 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    doSomethingFirst();
     return MaterialApp(
       title: 'Zero2 Shopping app',
       theme: ThemeData(
@@ -18,11 +24,6 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Zero2 Shopping app Home Page'),
     );
   }
-}
-
-doSomethingFirst() {
-  // Print CSV content to console
-  new CarbonCSVLoader().loadCSV();
 }
 
 class MyHomePage extends StatefulWidget {
@@ -38,6 +39,26 @@ class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  List<ProductCarbonData> _products = <ProductCarbonData>[];
+
+  Future<String> loadAsset(String path) async {
+    //here comes the list which we read in
+    return await rootBundle.loadString(path);
+  }
+
+  @override
+  void initState() {
+    rootBundle.loadString('data/products.csv').then((dynamic output) {
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ';').convert(output);
+      print(_csv);
+      setState(() {
+        for (var i = 0; i < _csv.length; i++) {
+          ProductCarbonData p = new ProductCarbonData(_csv[i][0], _csv[i][1], _csv[i][2]);
+          _products.add(p);
+        }
+      });
+    });
+  }
 
   void _handleSubmitted(String text) {
     _textController.clear();
@@ -56,6 +77,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called
+    if (_products == null) {
+      return new Container();
+    }
+
     return new Scaffold(
       appBar: new AppBar(title: new Text("Friendlychat")),
       body: new Column(
