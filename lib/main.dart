@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'chat_message.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -48,9 +50,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
+  final List<ChatMessage> _messages = <ChatMessage>[];
 
   void _handleSubmitted(String text) {
     _textController.clear();
+    ChatMessage message = new ChatMessage(                         //new
+      text: text,                                                  //new
+    );                                                             //new
+    setState(() {                                                  //new
+      _messages.insert(0, message);                                //new
+    });
   }
 
 
@@ -73,18 +82,26 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+    return new Scaffold(
+      appBar: new AppBar(title: new Text("Friendlychat")),
+      body: new Column(                                        //modified
+        children: <Widget>[                                         //new
+          new Flexible(                                             //new
+            child: new ListView.builder(                            //new
+              padding: new EdgeInsets.all(8.0),                     //new
+              reverse: true,                                        //new
+              itemBuilder: (_, int index) => _messages[index],      //new
+              itemCount: _messages.length,                          //new
+            ),                                                      //new
+          ),                                                        //new
+          new Divider(height: 1.0),                                 //new
+          new Container(                                            //new
+            decoration: new BoxDecoration(
+                color: Theme.of(context).cardColor),                  //new
+            child: _buildTextComposer(),                       //modified
+          ),                                                        //new
+        ],                                                          //new
       ),
-      body: _buildTextComposer(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.shopping_basket),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
