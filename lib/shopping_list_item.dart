@@ -12,10 +12,6 @@ class ShoppingListItemWidget extends StatelessWidget {
       child: new Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          new Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text("Dummy")),
-          ),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -24,6 +20,10 @@ class ShoppingListItemWidget extends StatelessWidget {
                 child: new Text(text),
               ),
             ],
+          ),
+          new Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: new CircleAvatar(child: new Text("Dummy")),
           ),
         ],
       ),
