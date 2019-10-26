@@ -12,14 +12,6 @@ class MyApp extends StatelessWidget {
       title: 'Zero2 Shopping app',
       theme: ThemeData(
         // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.green,
       ),
       home: MyHomePage(title: 'Zero2 Shopping app Home Page'),
@@ -145,9 +137,12 @@ class _MyHomePageState extends State<MyHomePage> {
       child: new Row(
         children: <Widget>[
           new Flexible(
-            child: new TextField(
+            child: new TextFormField(
               controller: _textController,
-              onSubmitted: _handleSubmitted,
+              validator: (value) {
+                return value;
+              },
+              onFieldSubmitted: _handleSubmitted,
               decoration: new InputDecoration.collapsed(
                   hintText: "Produkt hinzufügen"),
             ),
@@ -163,3 +158,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
