@@ -4,6 +4,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:zero2app/carbonHandler.dart';
 
+import 'product_list_widget.dart';
 import 'shopping_list_item.dart';
 
 import 'package:csv/csv.dart';
@@ -42,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
+  List<ProductListWidget> _productWidgets = <ProductListWidget>[];
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -59,7 +61,23 @@ class _MyHomePageState extends State<MyHomePage> {
           _products[_csv[i][0]] = p;
         }
       });
+      _createProductWidgets();
     });
+  }
+
+  void _createProductWidgets(){
+    ProductListWidget myWidget;
+
+    for(String p in _products.keys) {
+      myWidget = new ProductListWidget(p);
+      _productWidgets.add(myWidget);
+    }
+    /*for(int i = 0; i < productList.length - 1; i++) {
+      myWidget = new ProductListWidget(productList[i]);
+      _productWidgets.add(myWidget);
+      print("Test Benjamin");
+      print(productList[i]);
+    }*/
   }
 
   void _handleSubmitted(String text) {
@@ -101,6 +119,19 @@ class _MyHomePageState extends State<MyHomePage> {
               padding: new EdgeInsets.all(8.0),
               itemBuilder: (_, int index) => _items[index],
               itemCount: _items.length,
+            ),
+          ),
+          new Divider(height: 10.0),
+          new Container(
+            decoration: new BoxDecoration(
+                color: Theme.of(context).cardColor),
+            child: new Text("Vorschläge"),
+          ),
+          new Flexible(
+            child: new ListView.builder(
+              padding: new EdgeInsets.all(8.0),
+              itemBuilder: (_, int index) => _productWidgets[index],
+              itemCount: _productWidgets.length,
             ),
           ),
         ],
