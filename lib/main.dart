@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'chat_message.dart';
+import 'shopping_list_item.dart';
 
 void main() => runApp(MyApp());
 
@@ -42,15 +42,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
-  final List<ChatMessage> _messages = <ChatMessage>[];
+  final List<ShoppingListItem> _items = <ShoppingListItem>[];
 
   void _handleSubmitted(String text) {
     _textController.clear();
-    ChatMessage message = new ChatMessage(                         //new
-      text: text,                                                  //new
-    );                                                             //new
-    setState(() {                                                  //new
-      _messages.insert(0, message);                                //new
+    ShoppingListItem item = new ShoppingListItem(
+      text: text,
+    );
+    setState(() {
+      _items.insert(0, item);
     });
   }
 
@@ -76,54 +76,21 @@ class _MyHomePageState extends State<MyHomePage> {
     // than having to individually change instances of widgets.
     return new Scaffold(
       appBar: new AppBar(title: new Text("Friendlychat")),
-      body: new Column(                                        //modified
-        children: <Widget>[                                         //new
-          new Flexible(                                             //new
-            child: new ListView.builder(                            //new
-              padding: new EdgeInsets.all(8.0),                     //new
-              reverse: true,                                        //new
-              itemBuilder: (_, int index) => _messages[index],      //new
-              itemCount: _messages.length,                          //new
-            ),                                                      //new
-          ),                                                        //new
-          new Divider(height: 1.0),                                 //new
-          new Container(                                            //new
-            decoration: new BoxDecoration(
-                color: Theme.of(context).cardColor),                  //new
-            child: _buildTextComposer(),                       //modified
-          ),                                                        //new
-        ],                                                          //new
-      ),
-    );
-  }
-
-  Widget _createBody() {
-    return new Center(
-      // Center is a layout widget. It takes a single child and positions it
-      // in the middle of the parent.
-      child: Column(
-        // Column is also a layout widget. It takes a list of children and
-        // arranges them vertically. By default, it sizes itself to fit its
-        // children horizontally, and tries to be as tall as its parent.
-        //
-        // Invoke "debug painting" (press "p" in the console, choose the
-        // "Toggle Debug Paint" action from the Flutter Inspector in Android
-        // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-        // to see the wireframe for each widget.
-        //
-        // Column has various properties to control how it sizes itself and
-        // how it positions its children. Here we use mainAxisAlignment to
-        // center the children vertically; the main axis here is the vertical
-        // axis because Columns are vertical (the cross axis would be
-        // horizontal).
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: new Column(
         children: <Widget>[
-          Text(
-            'You have pushed the button this many times:',
+          new Flexible(
+            child: new ListView.builder(
+              padding: new EdgeInsets.all(8.0),
+              reverse: true,
+              itemBuilder: (_, int index) => _items[index],
+              itemCount: _items.length,
+            ),
           ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.display1,
+          new Divider(height: 1.0),
+          new Container(
+            decoration: new BoxDecoration(
+                color: Theme.of(context).cardColor),
+            child: _buildTextComposer(),
           ),
         ],
       ),
@@ -139,6 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
           new Flexible(
             child: new TextFormField(
               controller: _textController,
+              // TODO: Implement validator here
               validator: (value) {
                 return value;
               },
@@ -147,12 +115,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   hintText: "Produkt hinzufügen"),
             ),
           ),
-          new Container(                                                 //new
-            margin: new EdgeInsets.symmetric(horizontal: 4.0),           //new
-            child: new IconButton(                                       //new
-                icon: new Icon(Icons.add),                                //new
-                onPressed: () => _handleSubmitted(_textController.text)),  //new
-          ),                                                             //new
+          new Container(
+            margin: new EdgeInsets.symmetric(horizontal: 4.0),
+            child: new IconButton(
+                icon: new Icon(Icons.add),
+                onPressed: () => _handleSubmitted(_textController.text)),
+          ),
         ],
       ),
     );
