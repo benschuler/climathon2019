@@ -23,25 +23,28 @@ class SuggestionWidget extends StatelessWidget {
                 foregroundColor: Colors.black,
                 child: new Text(suggestionEntry.savings.toString())),
           ),
-          new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               new Container(
                 margin: const EdgeInsets.only(top: 5.0),
                 child: new Text(suggestionEntry.text),
               ),
+            //],
+          //),
+              new Container(
+                margin: new EdgeInsets.symmetric(horizontal: 4.0),
+                child: new IconButton(
+                    icon: new Icon(Icons.add_circle_outline),
+                    onPressed: () => _handleAdd()),
+              ),
+              new Container(
+                margin: new EdgeInsets.symmetric(horizontal: 4.0),
+                child: new IconButton(
+                    icon: new Icon(Icons.remove_circle_outline),
+                    onPressed: () => _handleRemove()),
+              ),
             ],
-          ),
-          new Container(
-            margin: new EdgeInsets.symmetric(horizontal: 4.0),
-            child: new IconButton(
-                icon: new Icon(Icons.add_circle_outline),
-                onPressed: () => _handleAdd()),
-          ),new Container(
-            margin: new EdgeInsets.symmetric(horizontal: 4.0),
-            child: new IconButton(
-                icon: new Icon(Icons.remove_circle_outline),
-                onPressed: () => _handleRemove()),
           ),
         ],
       ),
@@ -49,9 +52,9 @@ class SuggestionWidget extends StatelessWidget {
   }
 
   _determineColor(double inSavings) {
-    if(inSavings > 100) {
+    if(inSavings > 20) {
       return Colors.green;
-    } else if (inSavings > 50) {
+    } else if (inSavings > 10) {
       return Colors.yellow;
     } else {
       return Colors.red;
