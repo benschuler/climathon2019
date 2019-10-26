@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'shopping_list_item.dart';
+import 'carbon_csv_loader.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,6 +9,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    doSomethingFirst();
     return MaterialApp(
       title: 'Zero2 Shopping app',
       theme: ThemeData(
@@ -16,6 +18,11 @@ class MyApp extends StatelessWidget {
       home: MyHomePage(title: 'Zero2 Shopping app Home Page'),
     );
   }
+}
+
+doSomethingFirst() {
+  // Print CSV content to console
+  new CarbonCSVLoader().loadCSV();
 }
 
 class MyHomePage extends StatefulWidget {
@@ -38,9 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _textController.text = 'Kaputt';
     }
     else {
-      ShoppingListItemWidget item = new ShoppingListItemWidget(
-      text: text,
-    );
+      ShoppingListItemWidget item = new ShoppingListItemWidget(text);
     setState(() {
       int pos = _items.length;
       _items.insert(pos, item);

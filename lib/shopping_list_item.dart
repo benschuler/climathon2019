@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ShoppingListItemWidget extends StatelessWidget {
-  ShoppingListItemWidget({this.text});
+  ShoppingListItem shoppingListItem;
 
-  final String text;
+  ShoppingListItemWidget(String inText) {
+    shoppingListItem = new ShoppingListItem(inText);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,21 +14,29 @@ class ShoppingListItemWidget extends StatelessWidget {
       child: new Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          new Container(
+            margin: const EdgeInsets.only(right: 16.0),
+            child: new CircleAvatar(child: new Text("Dummy")),
+          ),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Container(
                 margin: const EdgeInsets.only(top: 5.0),
-                child: new Text(text),
+                child: new Text(shoppingListItem.text),
               ),
             ],
-          ),
-          new Container(
-            margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text("Dummy")),
           ),
         ],
       ),
     );
+  }
+}
+
+class ShoppingListItem {
+  String text = "";
+
+  ShoppingListItem(String inText) {
+    this.text = inText;
   }
 }
