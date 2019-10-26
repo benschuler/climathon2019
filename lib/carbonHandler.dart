@@ -24,7 +24,7 @@ class Suggestion {
 
 }
 
-List<Suggestion> getSuggestions(String inS, Map<String, ProductCarbonData> products, List<String> relatedProducts) {
+List<Suggestion> getSuggestions(List<String> inS, Map<String, ProductCarbonData> products, Map<String, List<String>> categories) {
   List<Suggestion> suggs = <Suggestion>[];
   for (var i = 0; i < relatedProducts.length; i++) {
     String p = relatedProducts[i];
