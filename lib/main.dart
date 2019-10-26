@@ -53,16 +53,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ';', eol: '\n').convert(output);
-      print(_csv);
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\r\n').convert(output);
+      for(List<dynamic> x in _csv) {
+        print(x);
+      }
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p = new ProductCarbonData(_csv[i][1], _csv[i][2], _csv[i][3]);
+
+          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
           _products[_csv[i][0]] = p;
-          if (!_categories.containsKey(_csv[i][2])) {
-            _categories[_csv[i][2]] = new List<String>();
+          if (!_categories.containsKey(_csv[i][1])) {
+            _categories[_csv[i][1]] = new List<String>();
           }
-          _categories[_csv[i][2]].add(_csv[i][0]);
+          _categories[_csv[i][1]].add(_csv[i][0]);
         }
       });
       _createProductWidgets();
@@ -81,6 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _handleSubmitted(String text) {
     //get list of suggestions like this
     List<Suggestion> suggs = getSuggestions("Butter", _products, _categories[_products["Butter"].productCategory]);
+
     _textController.clear();
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);

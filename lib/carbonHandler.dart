@@ -1,13 +1,13 @@
 class ProductCarbonData {
   double emissions;
   String productCategory;
-  int weight;
+  //int weight;
 
-  ProductCarbonData(double inEmissions, String inCategory, int inWeight) {
+  //ProductCarbonData(double inEmissions, String inCategory, int inWeight) {
+  ProductCarbonData(double inEmissions, String inCategory) {
     //this.product = inProduct;
     this.emissions = inEmissions;
     this.productCategory = inCategory;
-    this.weight = inWeight;
   }
 }
 
