@@ -4,6 +4,7 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:zero2app/carbonHandler.dart';
 
+import 'product_list_widget.dart';
 import 'shopping_list_item.dart';
 
 import 'package:csv/csv.dart';
@@ -42,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   Map<String, List<String>> _categories = new HashMap();
   Map<String, ProductCarbonData> _products = new HashMap();
+  List<ProductListWidget> _productWidgets = <ProductListWidget>[];
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -63,22 +65,31 @@ class _MyHomePageState extends State<MyHomePage> {
           _categories[_csv[i][2]].add(_csv[i][0]);
         }
       });
+      _createProductWidgets();
     });
+  }
+
+  void _createProductWidgets(){
+    ProductListWidget myWidget;
+
+    for(String p in _products.keys) {
+      myWidget = new ProductListWidget(p);
+      _productWidgets.add(myWidget);
+    }
   }
 
   void _handleSubmitted(String text) {
     //get list of suggestions like this
     List<Suggestion> suggs = getSuggestions("Butter", _products, _categories[_products["Butter"].productCategory]);
     _textController.clear();
-    if (text == ' ') {
-      _textController.text = 'Kaputt';
-    }
-    else {
+    if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
     setState(() {
       int pos = _items.length;
       _items.insert(pos, item);
     });
+    } else {
+      _textController.text = 'nicht gefunden';
     }
   }
 
@@ -110,6 +121,19 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: _items.length,
             ),
           ),
+          new Divider(height: 10.0),
+          new Container(
+            decoration: new BoxDecoration(
+                color: Theme.of(context).cardColor),
+            child: new Text("Vorschläge"),
+          ),
+          new Flexible(
+            child: new ListView.builder(
+              padding: new EdgeInsets.all(8.0),
+              itemBuilder: (_, int index) => _productWidgets[index],
+              itemCount: _productWidgets.length,
+            ),
+          ),
         ],
       ),
     );
@@ -118,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _pushSaved() {
     Navigator.of(context).push(
       MaterialPageRoute<void>(   // Add 20 lines from here...
-        builder: (BuildContext context) {
+//        builder: (BuildContext context) {
 //          final Iterable<ListTile> tiles = _saved.map(
 //                (WordPair pair) {
 //              return ListTile(
@@ -135,7 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //            tiles: tiles,
 //          )
 //              .toList();
-        },
+//        },
       ),                       // ... to here.
     );
   }
