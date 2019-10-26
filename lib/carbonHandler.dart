@@ -26,12 +26,12 @@ class Suggestion {
 
 List<Suggestion> getSuggestions(List<String> inS, Map<String, ProductCarbonData> products, Map<String, List<String>> categories) {
   List<Suggestion> suggs = <Suggestion>[];
-  for (var i = 0; i < relatedProducts.length; i++) {
+  /*for (var i = 0; i < relatedProducts.length; i++) {
     String p = relatedProducts[i];
     if (products[inS].emissions > products[p].emissions) {
       Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
       suggs.add(s);
     }
-  }
+  }*/
   return suggs;
 }
