@@ -24,13 +24,17 @@ class Suggestion {
 
 }
 
-List<Suggestion> getSuggestions(List<String> inS, Map<String, ProductCarbonData> products, Map<String, List<String>> categories) {
+List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbonData> products, Map<String, List<String>> categories) {
   List<Suggestion> suggs = <Suggestion>[];
-  for (var i = 0; i < relatedProducts.length; i++) {
-    String p = relatedProducts[i];
-    if (products[inS].emissions > products[p].emissions) {
-      Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
-      suggs.add(s);
+  for (var j = 0; j < inS_list.length; j++) {
+    String inS = inS_list[j];
+    List<String> relatedProducts = categories[products[inS].productCategory];
+    for (var i = 0; i < relatedProducts.length; i++) {
+      String p = relatedProducts[i];
+      if (products[inS].emissions > products[p].emissions) {
+        Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
+        suggs.add(s);
+      }
     }
   }
   return suggs;
