@@ -1,4 +1,222 @@
-Butter;0.93;Fette, Öle;250
-Butter und Margarine z.B Rama mit Butter;0.34;Fette,Öle;250
-Halbfettmargarine;0.11;Fette,Öle;250
-Honig;0.19;Sonstiges;500
+Butter,Fette/Öle,0.92,10,250,
+Butter und Margarine z.B Rama mit Butter,Fette/Öle,0.34,10,250,
+Halbfettmargarine,Fette/Öle,0.11,10,250,
+Olivenöl,Fette/Öle,0.31,10,750,
+Palmfett zum Braten,Fette/Öle,0.14,10,250,
+Pflanzencreme,Fette/Öle,0.02,10,250,
+Rapsöl,Fette/Öle,0.27,10,750,
+Sonnenblumenöl,Fette/Öle,0.22,10,750,
+Veganes Streichfett,Fette/Öle,0.17,10,250,
+Sesamöl,Fette/Öle,0.38,10,250,
+Gemüsebrühe,Sonstiges,0.15,15,200,
+Honig,Sonstiges,0.19,10,500,
+Kokosmilch,Sonstiges,0.05,100,400,
+Puderzucker,Sonstiges,0.05,20,250,
+Rinderbrühe,Sonstiges,0.18,15,250,
+Sojadrink,Sonstiges,0.07,20,1000,
+Zucker,Sonstiges,0.06,10,500,
+Ananas (Dose),Obst,0.17,62,340,
+Ananas (frisch),Obst,0.07,62,600,
+Apfel,Obst,0.03,200,1000,ja
+Aprikosen (Dose),Obst,0.17,50,475,
+Aprikosen (frisch),Obst,0.05,50,1000,nein
+Avocado,Obst,0.05,125,250,
+Banane,Obst,0.06,200,1000,
+Birne,Obst,0.03,200,1000,ja
+Brombeeren,Obst,0.07,100,250,nein
+Erdbeeren (TK),Obst,0.07,250,500,
+Erdbeeren (frisch),Obst,0.03,100,250,nein
+Feigen,Obst,0.09,64,256,
+Granatapfel,Obst,0.04,250,250,
+Heidelbeeren (TK),Obst,0.06,50,300,
+Heidelbeeren (frisch),Obst,0.05,50,125,nein
+Himbeere (gefroren),Obst,0.07,50,500,
+Himbeere (frisch),Obst,0.12,50,125,nein
+Kirschen,Obst,0.09,50,250,nein
+Kiwi,Obst,0.07,70,70,
+Mango,Obst,0.17,500,500,
+Maracuja/ Passionsfrucht,Obst,0.23,90,90,
+Nektarine,Obst,0.03,125,625,
+Oliven,Obst,0.15,50,180,
+Orange / Apfelsine,Obst,0.04,130,1000,
+Pfirsich,Obst,0.03,130,650,
+Pfirsich (Dose),Obst,0.15,65,500,
+Pflaume,Obst,0.02,50,250,nein
+Rosinen,Obst,0.09,50,125,
+Stachelbeeren,Obst,0.07,50,250,nein
+Wassermelone,Obst,0.04,286,10000,nein
+Weintrauben,Obst,0.04,100,500,ja
+Zitrone,Obst,0.04,58,500,
+Limette,Obst,0.17,67,268,
+Bohnen,Hülsenfrüchte/Samen/Nüsse,0.07,50,500,ja
+Bohnen (Dose),Hülsenfrüchte/Samen/Nüsse,0.12,50,500,
+Erbsen (grün),Hülsenfrüchte/Samen/Nüsse,0.08,50,500,nein
+Erbsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.12,50,280,
+Erdnüsse (ganz),Hülsenfrüchte/Samen/Nüsse,0.07,50,250,
+Kichererbsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.13,,265,
+Leinsamen,Hülsenfrüchte/Samen/Nüsse,0.12,,400,
+Linsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.15,,265,
+Linsen (getrocknet),Hülsenfrüchte/Samen/Nüsse,0.06,,,
+Tofu,Hülsenfrüchte/Samen/Nüsse,0.17,,300,
+Pinienkerne,Hülsenfrüchte/Samen/Nüsse,0.21,,50,
+Mandeln,Hülsenfrüchte/Samen/Nüsse,0.21,,200,
+Walnüsse,Hülsenfrüchte/Samen/Nüsse,0.1,,150,
+Pistazien,Hülsenfrüchte/Samen/Nüsse,0.41,,150,
+Cashewnüsse,Hülsenfrüchte/Samen/Nüsse,0.31,,200,
+Sonnenblumenkerne,Hülsenfrüchte/Samen/Nüsse,0.09,,250,
+Haselnüsse,Hülsenfrüchte/Samen/Nüsse,0.25,,200,
+Buttermilch,Milchprodukte,0.12,,500,
+Creme Fraiche,Milchprodukte,0.42,,200,
+Fetakäse,Milchprodukte,0.65,,150,
+Frischkäse,Milchprodukte,0.15,,200,
+H-Milch,Milchprodukte,0.14,,1000,
+Joghurt,Milchprodukte,0.24,,500,
+Joghurt (soja),Milchprodukte,0.09,,500,
+Kochcreme,Milchprodukte,0.09,,250,
+Käse,Milchprodukte,0.58,,150,
+Käse (bio),Milchprodukte,0.8,,150,
+Magerquark,Milchprodukte,0.25,,250,
+Milch,Milchprodukte,0.14,,1000,
+Sojamilch,Milchprodukte,0.02,,1000,
+Sojarahm,Milchprodukte,0.1,,,
+Parmesan,Milchprodukte,0.94,,150,
+Doppelrahm (45%),Milchprodukte,0.67,,175,
+Rahm (35% Fett),Milchprodukte,0.59,,175,
+Mozarella,Milchprodukte,0.43,,125,
+Quark,Milchprodukte,0.34,,250,
+Sahne,Milchprodukte,0.43,,200,
+Sahne Alternative z.B. Rama Cremefine zum Aufschlagen,Milchprodukte,0.1,,250,
+Saure Sahne,Milchprodukte,0.3,,250,
+Schmand,Milchprodukte,0.37,,250,
+Brötchen (Vollkorn),Getreideprodukte,0.06,,450,
+Brötchen (Weißmehl),Getreideprodukte,0.06,,450,
+Bulgur,Getreideprodukte,0.05,,500,
+Couscous,Getreideprodukte,0.04,,500,
+Haferflocken,Getreideprodukte,0.04,,500,
+Hirse,Getreideprodukte,0.05,,500,
+Knäckebrot,Getreideprodukte,0.05,,190,
+Nudeln,Getreideprodukte,0.05,,500,
+Nudeln (Vollkorn),Getreideprodukte,0.04,,500,
+Reisnudeln,Getreideprodukte,0.33,,400,
+Quinoa,Getreideprodukte,0.07,,400,
+Reis,Getreideprodukte,0.3,,500,
+Toast,Getreideprodukte,0.05,,500,
+Toast (Vollkorn),Getreideprodukte,0.05,,500,
+Vollkornbrot,Getreideprodukte,0.06,,500,
+Weißbrot,Getreideprodukte,0.06,,500,
+Weizenmehl,Getreideprodukte,0.03,,1000,
+Vollkornmehl,Getreideprodukte,0.05,,1000,
+Sesam,Getreideprodukte,0.26,,250,
+Risotto,Getreideprodukte,0.22,,500,
+Aubergine,Gemüse/Pilze,0.03,,350,ja
+Blumenkohl,Gemüse/Pilze,0.04,,879,ja
+Brokkoli,Gemüse/Pilze,0.06,,347,ja
+Brokkoli (TK),Gemüse/Pilze,0.09,,300,
+Champignon (hell oder dunkel),Gemüse/Pilze,0.13,,250,ja
+Champignons (Dose),Gemüse/Pilze,0.26,,315,
+Eisbergsalat,Gemüse/Pilze,0.02,,558,ja
+Feldsalat,Gemüse/Pilze,0.03,,558,ja
+Kartoffeln,Gemüse/Pilze,0.04,,2000,ja
+Fenchel,Gemüse/Pilze,0.02,,300,ja
+Grünkohl (Glas),Gemüse/Pilze,0.08,,720,
+Grünkohl (frisch),Gemüse/Pilze,0.04,,1000,nein
+Gurke,Gemüse/Pilze,0.04,,300,ja
+Karotte/Möhre,Gemüse/Pilze,0.03,,1000,ja
+Kirschtomaten,Gemüse/Pilze,0.09,,500,
+Kohlrabi,Gemüse/Pilze,0.04,,500,ja
+Kürbis,Gemüse/Pilze,0.02,,1000,ja
+Lauch,Gemüse/Pilze,0.02,,250,ja
+Mais (Dose),Gemüse/Pilze,0.12,,140,
+Paprika,Gemüse/Pilze,0.06,,500,ja
+Rettich (Meerrettich),Gemüse/Pilze,0.02,,250,
+Rosenkohl (frisch),Gemüse/Pilze,0.03,,750,ja
+Rosenkohl (TK),Gemüse/Pilze,0.06,,1000,
+Rote Beete (Glas),Gemüse/Pilze,0.14,,220,
+Rote Beete (frisch),Gemüse/Pilze,0.03,,300,ja
+Rotkohl (frisch),Gemüse/Pilze,0.04,,650,
+Rotkohl (Glas),Gemüse/Pilze,0.1,,680,
+Rucola,Gemüse/Pilze,0.03,,125,nein
+Salatmischung (gewaschen),Gemüse/Pilze,0.03,,350,
+Sellerie,Gemüse/Pilze,0.03,,750,ja
+Spargel (grün),Gemüse/Pilze,0.06,,500,nein
+Spargel (weiß),Gemüse/Pilze,0.06,,500,nein
+Spinat (TK),Gemüse/Pilze,0.06,,450,
+Spinat (frisch),Gemüse/Pilze,0.03,,250,ja
+Süßkartoffel,Gemüse/Pilze,0.04,,300,
+Tomate,Gemüse/Pilze,0.08,,500,ja
+Tomate (Dose),Gemüse/Pilze,0.19,,280,
+Tomate (Gewächshaus),Gemüse/Pilze,0.29,,500,
+Weißkohl,Gemüse/Pilze,0.04,,1500,ja
+Wirsing,Gemüse/Pilze,0.03,,500,ja
+Zucchini,Gemüse/Pilze,0.03,,220,ja
+Zwiebeln,Gemüse/Pilze,0.03,,500,ja
+Frühlingszwiebel,Gemüse/Pilze,0.2,,162.5,ja
+Eier,Fleisch/ Geflügel/ Eier,0.2,,680,
+Eier (Bio),Fleisch/ Geflügel/ Eier,0.15,,680,
+Frikadellen,Fleisch/ Geflügel/ Eier,0.26,,240,
+Hackfleisch (gemischt),Fleisch/ Geflügel/ Eier,0.56,,500,
+Hähnchenfleisch TK,Fleisch/ Geflügel/ Eier,0.39,,1000,
+Hähnchenfleisch (frisch),Fleisch/ Geflügel/ Eier,0.37,,1000,
+Lamm,Fleisch/ Geflügel/ Eier,0.77,,200,
+Pute,Fleisch/ Geflügel/ Eier,0.42,,400,
+Rind,Fleisch/ Geflügel/ Eier,1.23,,500,
+Rind (Bio),Fleisch/ Geflügel/ Eier,1.14,,500,
+Rind (TK),Fleisch/ Geflügel/ Eier,1.43,,500,
+Schwein,Fleisch/ Geflügel/ Eier,0.42,,500,
+Schwein (TK),Fleisch/ Geflügel/ Eier,0.43,,500,
+Wild,Fleisch/ Geflügel/ Eier,1.05,,500,
+Wurst,Fleisch/ Geflügel/ Eier,0.36,,100,
+Würstchen,Fleisch/ Geflügel/ Eier,0.38,,200,
+Hamburger Patty,Fleisch/ Geflügel/ Eier,0.81,,300,
+Speck (geräuchert),Fleisch/ Geflügel/ Eier,0.6,,80,
+Fisch (frisch),Fisch/Meerestiere,0.63,,600,
+Fisch (TK),Fisch/Meerestiere,0.41,,800,
+Forelle,Fisch/Meerestiere,0.63,,600,
+Garnelen (TK),Fisch/Meerestiere,1.26,,200,
+Hering,Fisch/Meerestiere,0.63,,600,
+Kabeljau,Fisch/Meerestiere,0.63,,600,
+Lachs,Fisch/Meerestiere,0.63,,600,
+Makrele,Fisch/Meerestiere,0.63,,600,
+Muscheln,Fisch/Meerestiere,0.63,,70,
+Rotbarsch,Fisch/Meerestiere,0.63,,600,
+Pommes-frites TK,Fertigprodukte,0.57,,500,
+Feinbackwaren,Fertigprodukte,0.09,,480,
+Basilikum (getrocknet),Gewürze/Kräuter,0.35,,25,
+Thymian (getrocknet),Gewürze/Kräuter,0.35,,25,
+Muskat,Gewürze/Kräuter,0.25,,35,
+Paprikapulver,Gewürze/Kräuter,0.4,,100,
+Pfeffer,Gewürze/Kräuter,0.03,,45,
+Pfeffer (getrocknet),Gewürze/Kräuter,0.35,,45,
+Sojasauce,Gewürze/Kräuter,0.13,,150,
+Essig / Apfelessig,Gewürze/Kräuter,0.29,,750,
+Hefeextrakt,Gewürze/Kräuter,0.08,,125,
+Hefe,Gewürze/Kräuter,0.08,,42,
+Salz,Gewürze/Kräuter,0.03,,500,
+Zucker (Zuckerrüben),Gewürze/Kräuter,0.03,,500,
+Senf,Gewürze/Kräuter,0.07,,200,
+Knoblauch,Gewürze/Kräuter,0.04,,150,
+Zitronensaft,Gewürze/Kräuter,0.07,,750,
+Orangensaft,Gewürze/Kräuter,0.03,,750,
+Spirituosen,Gewürze/Kräuter,0.38,,750,
+Schokolade (dunkel),Fertigprodukte,0.21,,100,
+Nelken (getrocknet),Gewürze/Kräuter,0.32,,35,
+Zimt (getrocknet),Gewürze/Kräuter,0.35,,30,
+Basilikum,Gewürze/Kräuter,0.03,,40,
+Senfkörner,Gewürze/Kräuter,0.03,,100,
+Dill,Gewürze/Kräuter,0.04,,50,
+Oregano,Gewürze/Kräuter,0.02,,70,
+Rosmarin,Gewürze/Kräuter,0.02,,15,
+Currypaste (rot),Gewürze/Kräuter,0.09,,290,
+Ingwer,Gewürze/Kräuter,0.03,,100,
+Kreuzkümmel,Gewürze/Kräuter,0.03,,100,
+Cumin,Gewürze/Kräuter,0.03,,100,
+Zuckerrohr,Gewürze/Kräuter,0.01,,500,
+Petersilie,Gewürze/Kräuter,0.03,,50,
+Zitronengras,Gewürze/Kräuter,0.78,,50,
+Chili (getrocknet),Gewürze/Kräuter,0.35,,25,
+Kurkuma (getrocknet),Gewürze/Kräuter,0.35,,35,
+Lorbeer (getrocknet),Gewürze/Kräuter,0.33,,5,
+Koriander,Gewürze/Kräuter,0.29,,15,
+Tomatenkonzentrat (3fach),Gewürze/Kräuter,0.15,,200,
+Wein (rot),Getränke,0.14,,750,
+Wein (weiss),Getränke,0.14,,750,
