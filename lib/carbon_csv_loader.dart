@@ -12,7 +12,9 @@ class CarbonCSVLoader {
     loadAsset('data/test.csv').then((dynamic output) {
       String csvRaw = output;
       //print(csvRaw);
-      List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter().convert(csvRaw);
+      CsvToListConverter myConverter = new CsvToListConverter(
+          eol: "/n");
+      List<List<dynamic>> rowsAsListOfValues = myConverter.convert(csvRaw);
       print(rowsAsListOfValues);
     });
   }

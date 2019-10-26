@@ -45,9 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _textController.text = 'Kaputt';
     }
     else {
-      ShoppingListItemWidget item = new ShoppingListItemWidget(
-      text: text,
-    );
+      ShoppingListItemWidget item = new ShoppingListItemWidget(text);
     setState(() {
       int pos = _items.length;
       _items.insert(pos, item);
