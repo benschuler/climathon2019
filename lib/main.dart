@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:csv/csv.dart';
+import 'dart:async' show Future;
+import 'package:flutter/services.dart' show rootBundle;
+
+
 
 import 'shopping_list_item.dart';
 
@@ -7,7 +12,9 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
+
   Widget build(BuildContext context) {
+    loadCSV();
     return MaterialApp(
       title: 'Zero2 Shopping app',
       theme: ThemeData(
@@ -18,6 +25,21 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+Future<String> loadAsset(String path) async { //here comes the list which we read in
+  return await rootBundle.loadString(path);
+}
+
+void loadCSV() {
+  loadAsset('data/test.csv').then((dynamic output) {
+
+    String csvRaw = output;
+    List<List<dynamic>> rowsAsListOfValues = const CsvToListConverter().convert(csvRaw);
+    print(rowsAsListOfValues);
+  });
+
+}
+
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -65,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
