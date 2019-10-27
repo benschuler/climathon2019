@@ -41,16 +41,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
-  final TextEditingController _textControllerTotalCart =
-      new TextEditingController();
-  final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  final TextEditingController _textControllerTotalCart = new TextEditingController();
+  List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
+  List<ShoppingListItemWidget> _itemsTemp = <ShoppingListItemWidget>[];
   Map<String, List<String>> _categories = new HashMap();
   int _selectedIndex = 0;
   int _pageIndex = 0;
-  double _savedCo2 = 1.0;
   double _originalCartCo2 = 0.0;
 
-  int cartEmissions = 0;
+  double savedEmissions = 0;
 
   List<String> shoppingList = <String>[];
 
@@ -116,11 +115,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _createSuggestionWidgets(List<Suggestion> inSuggs) {
     SuggestionWidget myWidget;
+    _suggestionWidgets.clear();
 
-    for (Suggestion sug in inSuggs) {
-      myWidget = new SuggestionWidget(sug);
+    for(Suggestion sug in inSuggs) {
+      myWidget = new SuggestionWidget(sug, this.sugCallback);
       _suggestionWidgets.add(myWidget);
     }
+  }
+
+  void sugCallback(Suggestion inSug) {
+    setState(() {
+      _itemsTemp = new List<ShoppingListItemWidget>();
+      ShoppingListItemWidget suggestedItem;
+
+      for(ShoppingListItemWidget item in _items) {
+        if(item.shoppingListItem.text == inSug.old) {
+          suggestedItem = new ShoppingListItemWidget(inSug.sugg);
+          savedEmissions += inSug.reducedEmissions / 100;
+        } else {
+          suggestedItem = new ShoppingListItemWidget(item.shoppingListItem.text);
+        }
+        _itemsTemp.add(suggestedItem);
+      }
+      _textControllerTotalCart.text = _updateCartEmissions();
+      _items = _itemsTemp;
+    });
   }
 
   void _handleSubmitted(String text) {
@@ -139,6 +158,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     _textController.clear();
     _textControllerTotalCart.text = _updateCartEmissions();
+
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
       setState(() {
@@ -151,9 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   String _updateCartEmissions() {
-    cartEmissions++;
-
-    String output = cartEmissions.toString() + " Kg Co2";
+    String output = savedEmissions.toString() + " Kg Co2";
 
     return output;
   }
@@ -205,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: _productWidgets.length,
     );
 
-    var _percentageSaved = _savedCo2 / _originalCartCo2 * 100;
+    var _percentageSaved = savedEmissions / _originalCartCo2 * 100;
     var _perYearCo2Kg = 1800 * _percentageSaved / 100;
 
     var page3 = Column(
@@ -216,7 +234,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         new Divider(height: 1.0),
         new Text(
-          "Gespart durch Tipps: " + _savedCo2.toStringAsFixed(2) + "kg Co2",
+          "Gespart durch Tipps: " + savedEmissions.toStringAsFixed(2) + "kg Co2",
           style: TextStyle(height: 2, fontSize: 18),
         ),
         new Divider(height: 1.0),
