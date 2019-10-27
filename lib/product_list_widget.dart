@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class ProductListWidget extends StatelessWidget {
   ProductListItem productListItem;
 
-  ProductListWidget(String inText, String category, double co2) {
+  ProductListWidget(String inText, String category, double co2, bool inSeason) {
     productListItem = new ProductListItem(inText, category, co2);
+    if (!inSeason) {
+      productListItem = new ProductListItem(inText + ", außer Saison", category, co2);
+    }
   }
 
   @override

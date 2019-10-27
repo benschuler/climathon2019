@@ -56,7 +56,6 @@ Erdnüsse (ganz),Hülsenfrüchte/Samen/Nüsse,0.07,50,250,
 Kichererbsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.13,,265,
 Leinsamen,Hülsenfrüchte/Samen/Nüsse,0.12,,400,
 Linsen (Dose),Hülsenfrüchte/Samen/Nüsse,0.15,,265,
-Linsen (getrocknet),Hülsenfrüchte/Samen/Nüsse,0.06,,,
 Tofu,Hülsenfrüchte/Samen/Nüsse,0.17,,300,
 Pinienkerne,Hülsenfrüchte/Samen/Nüsse,0.21,,50,
 Mandeln,Hülsenfrüchte/Samen/Nüsse,0.21,,200,
@@ -78,7 +77,6 @@ Käse (bio),Milchprodukte,0.8,,150,
 Magerquark,Milchprodukte,0.25,,250,
 Milch,Milchprodukte,0.14,,1000,
 Sojamilch,Milchprodukte,0.02,,1000,
-Sojarahm,Milchprodukte,0.1,,,
 Parmesan,Milchprodukte,0.94,,150,
 Doppelrahm (45%),Milchprodukte,0.67,,175,
 Rahm (35% Fett),Milchprodukte,0.59,,175,
@@ -150,7 +148,7 @@ Weißkohl,Gemüse/Pilze,0.04,,1500,ja
 Wirsing,Gemüse/Pilze,0.03,,500,ja
 Zucchini,Gemüse/Pilze,0.03,,220,ja
 Zwiebeln,Gemüse/Pilze,0.03,,500,ja
-Frühlingszwiebel,Gemüse/Pilze,0.2,,162.5,ja
+Frühlingszwiebel,Gemüse/Pilze,0.2,,163,ja
 Eier,Fleisch/ Geflügel/ Eier,0.2,,680,
 Eier (Bio),Fleisch/ Geflügel/ Eier,0.15,,680,
 Frikadellen,Fleisch/ Geflügel/ Eier,0.26,,240,

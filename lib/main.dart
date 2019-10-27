@@ -47,8 +47,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Map<String, List<String>> _categories = new HashMap();
   int _selectedIndex = 0;
   int _pageIndex = 0;
-  double _savedCo2 = 0.0;
+  double _savedCo2 = 1.0;
   double _originalCartCo2 = 0.0;
+
+  int cartEmissions = 0;
 
   List<String> shoppingList = <String>[];
 
@@ -67,14 +69,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
       List<List<dynamic>> _csv =
-          const CsvToListConverter(fieldDelimiter: ',', eol: '\n')
+          const CsvToListConverter(fieldDelimiter: ',')
               .convert(output);
       for (List<dynamic> x in _csv) {
         print(x);
       }
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
+          ProductCarbonData p =
+              new ProductCarbonData(_csv[i][2], _csv[i][1], _csv[i][4], _csv[i][5]);
           _products[_csv[i][0]] = p;
           if (!_categories.containsKey(_csv[i][1])) {
             _categories[_csv[i][1]] = new List<String>();
@@ -100,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
       for (String productKey in _categories[category]) {
         ProductCarbonData product = _products[productKey];
         myWidget = new ProductListWidget(
-            productKey, product.productCategory, product.emissions);
+            productKey, product.productCategory, product.emissions, product.inSeason);
         listForCategory.add(myWidget);
       }
       listForCategory.sort(
@@ -125,6 +128,9 @@ class _MyHomePageState extends State<MyHomePage> {
     //List<String> inputProducts = <String>[];
 
     shoppingList.add(text);
+    _originalCartCo2 =
+        _originalCartCo2 + getCo2PerPackageForProduct(text, _products);
+
     List<Suggestion> suggs =
         getSuggestions(shoppingList, _products, _categories);
     print(suggs[0].reducedEmissions);
@@ -132,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _createSuggestionWidgets(suggs);
 
     _textController.clear();
-    _textControllerTotalCart.text = "Immer noch";
+    _textControllerTotalCart.text = _updateCartEmissions();
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
       setState(() {
@@ -142,6 +148,14 @@ class _MyHomePageState extends State<MyHomePage> {
     } else {
       _textController.text = 'nicht gefunden';
     }
+  }
+
+  String _updateCartEmissions() {
+    cartEmissions++;
+
+    String output = cartEmissions.toString() + " Kg Co2";
+
+    return output;
   }
 
   @override
@@ -191,11 +205,28 @@ class _MyHomePageState extends State<MyHomePage> {
       itemCount: _productWidgets.length,
     );
 
+    var _percentageSaved = _savedCo2 / _originalCartCo2 * 100;
+    var _perYearCo2Kg = 1800 * _percentageSaved / 100;
+
     var page3 = Column(
       children: <Widget>[
-        new Text("Alte Liste: " + _originalCartCo2.toString()),
+        new Text(
+          "Alter Einkauf: " + _originalCartCo2.toStringAsFixed(2) + "kg Co2",
+          style: TextStyle(height: 2, fontSize: 18),
+        ),
         new Divider(height: 1.0),
-        new Text("Gespart: " + _savedCo2.toString()),
+        new Text(
+          "Gespart durch Tipps: " + _savedCo2.toStringAsFixed(2) + "kg Co2",
+          style: TextStyle(height: 2, fontSize: 18),
+        ),
+        new Divider(height: 1.0),
+        new Text(
+          "entspricht " + _percentageSaved.toStringAsFixed(1) + " %",
+          style: TextStyle(height: 2, fontSize: 18),
+        ),
+        new Divider(height: 1.0),
+        new Text("Pro Jahr ca. " + _perYearCo2Kg.toStringAsFixed(0) + "kg Co2",
+          style: TextStyle(height: 2, fontSize: 18),),
       ],
     );
 

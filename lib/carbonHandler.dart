@@ -1,13 +1,21 @@
 class ProductCarbonData {
   double emissions;
   String productCategory;
-  //int weight;
+  int weight;
+  double weightedEmissions;
+  bool inSeason;
 
   //ProductCarbonData(double inEmissions, String inCategory, int inWeight) {
-  ProductCarbonData(double inEmissions, String inCategory) {
+  ProductCarbonData(double inEmissions, String inCategory, int inWeight, String ininSeason) {
     //this.product = inProduct;
     this.emissions = inEmissions;
     this.productCategory = inCategory;
+    this.weight = inWeight;
+    this.weightedEmissions = weight * emissions;
+    this.inSeason = true;
+    if(ininSeason == "nein"){
+      this.inSeason = false;
+    }
   }
 }
 
@@ -33,7 +41,8 @@ List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbon
     for (var i = 0; i < relatedProducts.length; i++) {
       String p = relatedProducts[i];
       if (products[inS].emissions > products[p].emissions) {
-        Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
+        double redEm = products[inS].weightedEmissions - products[p].emissions * products[inS].weight;
+        Suggestion s = new Suggestion(inS, p, redEm);
         p_suggs.add(s);
       }
     }
@@ -42,4 +51,9 @@ List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbon
   }
   suggs.sort((a, b) => b.reducedEmissions.compareTo(a.reducedEmissions));
   return suggs;
+}
+
+double getCo2PerPackageForProduct(String productKey, Map<String, ProductCarbonData> products){
+  ProductCarbonData product = products[productKey];
+  return product.weight / 100 * product.emissions;
 }
