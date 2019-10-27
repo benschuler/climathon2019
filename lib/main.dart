@@ -224,7 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     var _percentageSaved = savedEmissions / _originalCartCo2 * 100;
-    var _perYearCo2Kg = 1800 * _percentageSaved / 100;
+    var _perYearCo2Kg = 1710 * _percentageSaved / 100;
 
     var page3 = Column(
       children: <Widget>[
