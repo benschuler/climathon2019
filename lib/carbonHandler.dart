@@ -47,7 +47,7 @@ List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbon
       }
     }
     p_suggs.sort((a, b) => b.reducedEmissions.compareTo(a.reducedEmissions));
-    print(p_suggs);
+    //print(p_suggs);
     suggs.addAll(p_suggs.getRange(0, 3));
   }
   suggs.sort((a, b) => b.reducedEmissions.compareTo(a.reducedEmissions));
