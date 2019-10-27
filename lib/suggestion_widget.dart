@@ -1,12 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'carbonHandler.dart';
 
 class SuggestionWidget extends StatelessWidget {
-  SuggestionEntry suggestionEntry;
+  Suggestion suggestion;
 
-  SuggestionWidget(String inText) {
-    suggestionEntry = new SuggestionEntry(inText, 80);
+  SuggestionWidget(Suggestion inSug) {
+    suggestion = inSug;
   }
 
   @override
@@ -18,14 +19,14 @@ class SuggestionWidget extends StatelessWidget {
         children: <Widget>[
           new Container(
             margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text(suggestionEntry.savings.toString())),
+            child: new CircleAvatar(child: new Text(suggestion.reducedEmissions.toString())),
           ),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               new Container(
                 margin: const EdgeInsets.only(top: 5.0),
-                child: new Text(suggestionEntry.text),
+                child: new Text(suggestion.old + " --> " + suggestion.sugg),
               ),
             ],
           ),
@@ -47,21 +48,11 @@ class SuggestionWidget extends StatelessWidget {
 
   _handleAdd() {
     print("Adding ");
-    print(suggestionEntry.text);
+    print(suggestion.old);
   }
 
   _handleRemove() {
     print("Remove ");
-    print(suggestionEntry.text);
-  }
-}
-
-class SuggestionEntry {
-  String text = "";
-  double savings;
-
-  SuggestionEntry(String inText, double inSavings) {
-    this.text = inText;
-    savings = inSavings;
+    print(suggestion.old);
   }
 }
