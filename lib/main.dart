@@ -13,7 +13,6 @@ import 'package:flutter/services.dart' show rootBundle;
 
 import 'suggestion_widget.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -42,10 +41,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
-  final TextEditingController _textControllerTotalCart = new TextEditingController();
+  final TextEditingController _textControllerTotalCart =
+      new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   Map<String, List<String>> _categories = new HashMap();
   int _selectedIndex = 0;
+  int _pageIndex = 0;
+  double _savedCo2 = 0.0;
+  double _originalCartCo2 = 0.0;
 
   List<String> shoppingList = <String>[];
 
@@ -63,13 +66,14 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\n').convert(output);
-      for(List<dynamic> x in _csv) {
+      List<List<dynamic>> _csv =
+          const CsvToListConverter(fieldDelimiter: ',', eol: '\n')
+              .convert(output);
+      for (List<dynamic> x in _csv) {
         print(x);
       }
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
-
           ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
           _products[_csv[i][0]] = p;
           if (!_categories.containsKey(_csv[i][1])) {
@@ -82,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  void _createProductWidgets(){
+  void _createProductWidgets() {
     ProductListWidget myWidget;
 
     /*for(String p in _products.keys) {
@@ -90,26 +94,27 @@ class _MyHomePageState extends State<MyHomePage> {
       myWidget = new ProductListWidget(p, product.productCategory, product.emissions);
       _productWidgets.add(myWidget);
     }*/
-    for(String category in _categories.keys) {
+    for (String category in _categories.keys) {
       String first = _categories[category][0];
       List<ProductListWidget> listForCategory = new List();
-      for(String productKey in _categories[category]) {
+      for (String productKey in _categories[category]) {
         ProductCarbonData product = _products[productKey];
-        myWidget = new ProductListWidget(productKey, product.productCategory, product.emissions);
+        myWidget = new ProductListWidget(
+            productKey, product.productCategory, product.emissions);
         listForCategory.add(myWidget);
       }
-      listForCategory.sort((a,b) => b.productListItem.co2.compareTo(a.productListItem.co2));
-      for(ProductListWidget widget in listForCategory) {
+      listForCategory.sort(
+          (a, b) => b.productListItem.co2.compareTo(a.productListItem.co2));
+      for (ProductListWidget widget in listForCategory) {
         _productWidgets.add(widget);
       }
     }
-
   }
 
-  void _createSuggestionWidgets(List<Suggestion> inSuggs){
+  void _createSuggestionWidgets(List<Suggestion> inSuggs) {
     SuggestionWidget myWidget;
 
-    for(Suggestion sug in inSuggs) {
+    for (Suggestion sug in inSuggs) {
       myWidget = new SuggestionWidget(sug);
       _suggestionWidgets.add(myWidget);
     }
@@ -120,7 +125,8 @@ class _MyHomePageState extends State<MyHomePage> {
     //List<String> inputProducts = <String>[];
 
     shoppingList.add(text);
-    List<Suggestion> suggs = getSuggestions(shoppingList, _products, _categories);
+    List<Suggestion> suggs =
+        getSuggestions(shoppingList, _products, _categories);
     print(suggs[0].reducedEmissions);
 
     _createSuggestionWidgets(suggs);
@@ -129,10 +135,10 @@ class _MyHomePageState extends State<MyHomePage> {
     _textControllerTotalCart.text = "Immer noch";
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
-    setState(() {
-      int pos = _items.length;
-      _items.insert(pos, item);
-    });
+      setState(() {
+        int pos = _items.length;
+        _items.insert(pos, item);
+      });
     } else {
       _textController.text = 'nicht gefunden';
     }
@@ -166,8 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         new Divider(height: 10.0),
         new Container(
-          decoration: new BoxDecoration(
-              color: Theme.of(context).cardColor),
+          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
           child: new Text("Vorschläge"),
         ),
         new Flexible(
@@ -177,19 +182,27 @@ class _MyHomePageState extends State<MyHomePage> {
             itemCount: _suggestionWidgets.length,
           ),
         ),
-
       ],
     );
 
-    var page2 =new ListView.builder(
-        padding: new EdgeInsets.all(8.0),
-        itemBuilder: (_, int index) => _productWidgets[index],
-        itemCount: _productWidgets.length,
-      );
+    var page2 = new ListView.builder(
+      padding: new EdgeInsets.all(8.0),
+      itemBuilder: (_, int index) => _productWidgets[index],
+      itemCount: _productWidgets.length,
+    );
+
+    var page3 = Column(
+      children: <Widget>[
+        new Text("Alte Liste: " + _originalCartCo2.toString()),
+        new Divider(height: 1.0),
+        new Text("Gespart: " + _savedCo2.toString()),
+      ],
+    );
 
     List<Widget> _pages = new List();
     _pages.add(page1);
     _pages.add(page2);
+    _pages.add(page3);
 
     return new Scaffold(
       appBar: new AppBar(
@@ -200,7 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(Icons.playlist_add_check), onPressed: _pushSaved)
         ], // ... to here.
       ),
-      body: _pages.elementAt(_selectedIndex),
+      body: _pages.elementAt(_pageIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -222,32 +235,14 @@ class _MyHomePageState extends State<MyHomePage> {
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
+      _pageIndex = index;
     });
   }
 
   void _pushSaved() {
-    Navigator.of(context).push(
-      MaterialPageRoute<void>(   // Add 20 lines from here...
-//        builder: (BuildContext context) {
-//          final Iterable<ListTile> tiles = _saved.map(
-//                (WordPair pair) {
-//              return ListTile(
-//                title: Text(
-//                  pair.asPascalCase,
-//                  style: _biggerFont,
-//                ),
-//              );
-//            },
-//          );
-//          final List<Widget> divided = ListTile
-//              .divideTiles(
-//            context: context,
-//            tiles: tiles,
-//          )
-//              .toList();
-//        },
-      ),                       // ... to here.
-    );
+    setState(() {
+      _pageIndex = 2;
+    });
   }
 
   // Widget for text input
@@ -260,8 +255,8 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new TextField(
               controller: _textController,
               onSubmitted: _handleSubmitted,
-              decoration: new InputDecoration.collapsed(
-                  hintText: "Produkt hinzufügen"),
+              decoration:
+                  new InputDecoration.collapsed(hintText: "Produkt hinzufügen"),
             ),
           ),
           new Container(
@@ -290,8 +285,9 @@ class _MyHomePageState extends State<MyHomePage> {
           new Flexible(
             //margin: new EdgeInsets.symmetric(horizontal: 4.0),
             child: new TextField(
-                controller: _textControllerTotalCart,
-                enabled: false,),
+              controller: _textControllerTotalCart,
+              enabled: false,
+            ),
           ),
         ],
       ),
