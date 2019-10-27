@@ -72,7 +72,7 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
 
-          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
+          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1], _csv[i][4]);
           _products[_csv[i][0]] = p;
           if (!_categories.containsKey(_csv[i][1])) {
             _categories[_csv[i][1]] = new List<String>();
