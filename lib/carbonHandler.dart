@@ -1,13 +1,16 @@
 class ProductCarbonData {
   double emissions;
   String productCategory;
-  //int weight;
+  int weight;
+  double weightedEmissions;
 
   //ProductCarbonData(double inEmissions, String inCategory, int inWeight) {
-  ProductCarbonData(double inEmissions, String inCategory) {
+  ProductCarbonData(double inEmissions, String inCategory, int inWeight) {
     //this.product = inProduct;
     this.emissions = inEmissions;
     this.productCategory = inCategory;
+    this.weight = inWeight;
+    this.weightedEmissions = weight * emissions;
   }
 }
 
@@ -33,7 +36,8 @@ List<Suggestion> getSuggestions(List<String> inS_list, Map<String, ProductCarbon
     for (var i = 0; i < relatedProducts.length; i++) {
       String p = relatedProducts[i];
       if (products[inS].emissions > products[p].emissions) {
-        Suggestion s = new Suggestion(inS, p, products[inS].emissions - products[p].emissions);
+        double redEm = products[inS].weightedEmissions - products[p].emissions * products[inS].weight;
+        Suggestion s = new Suggestion(inS, p, redEm);
         p_suggs.add(s);
       }
     }

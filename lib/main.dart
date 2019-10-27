@@ -59,13 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
       List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',').convert(output);
-      for(List<dynamic> x in _csv) {
-        print(x);
-      }
+
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
 
-          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1]);
+          ProductCarbonData p = new ProductCarbonData(_csv[i][2], _csv[i][1], _csv[i][4]);
           _products[_csv[i][0]] = p;
           if (!_categories.containsKey(_csv[i][1])) {
             _categories[_csv[i][1]] = new List<String>();
