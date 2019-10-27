@@ -1,0 +1,346 @@
+Banane
+114 g
+Birne
+206 g
+Blumenkohl 
+879 g
+Heidelbeere
+1.5 g
+Himbeere
+3 g
+Kiwi 
+70 g
+Mango
+500 g
+Passionsfrucht
+100 g
+Maracuja
+100 g
+Spargel
+32 g
+Champignons
+250 g
+Rotkohl
+160 g
+Rettich 
+250 g
+Gurke
+600 g
+Fenchel 
+225 g
+Artischoke 
+250 g
+Blumenkohl
+750 g
+Aubergine
+500 g
+Wirsing
+1000 g
+Weißkohl 
+1000 g
+Sellerie
+580 g
+Rosenkohl 
+12 g
+Rumpsteak
+200 g
+Lachs
+600 g
+Kabeljau
+600 g
+Forelle
+600 g
+Rotbarsch
+600 g
+Fisch
+600 g
+Wild
+600 g
+Schwein 
+600 g
+Rind 
+600 g
+Pute 
+600 g
+Lamm 
+600 g 
+Speck 
+300 g
+Hering 
+600 g
+Pfeffer
+3 g
+Sojasauche
+80 g
+Salz
+3 g
+Senf 
+10 g
+Nelken
+3 g
+Zimt 
+3 g
+Senfkörner
+3 g
+Rosmarin
+3 g
+Curry
+6 g
+Ingwer 
+6 g
+Petersilie
+3 g
+Zitronengras 
+3 g
+Kurkuma
+3 g
+Koriander
+3 g
+Tomatenmark
+3 g
+Wein 
+10 g
+Rotkohl
+1500 g
+Frikadelle
+100 g
+Radieschen 
+12 g
+Eisbergsalat 
+300 g
+Lauch 
+100 g
+Plaume
+35 g
+Quark
+250 g
+Mozarella
+125 g
+Pinienkern
+15 g
+Joghurt 
+150 g
+Traube
+5 g
+Weintraube
+5 g
+Feige 
+25 g
+Erdbeere
+12 g
+Kirsche 
+1.4 g
+Apfel 	
+135 g
+Aprikose 
+8 g
+Aubergine  
+340 g
+Avocado 
+160 g
+Backpulver 
+17 g
+Basilikum
+40 g
+Banane 
+114 g
+Birne 
+206 g
+Blumenkohl
+879 g
+Brokkoli 
+347 g
+Brot
+40 g
+Brötchen
+45 g
+Brühwürfel 
+10 g
+Champignon 
+21 g
+Cashewkern 	
+1.5 g
+Chicoree 
+120 g
+Chillischote 	
+0.5 g
+Cornedbeef 	
+25 g
+Curry
+3 g
+Dattel	
+5 g
+Ei 	
+55 g
+Eigelb 	
+20 g
+Eiweiss 	
+30 g
+Essig 	
+4 g
+Essig 		
+14 g
+Eis		
+60 g
+Frischkäse 	
+30 g
+Flohsamen
+3 g
+Schinken
+40 g
+Fenchel 		
+286 g
+Tomate 		
+220 g
+Zwiebel 	
+286 g
+Kurkuma
+1 g
+Kardamon
+1 g
+Anis
+1 g
+Grapefruit	
+350 g
+Grieß 	
+20 g
+Haferflocken 	
+10 g
+Hefe 	
+7 g
+Frischhefe 		
+42 g
+Honig 	
+25 g
+Honigmelone 		
+869 g
+Johannisbrotkernmehl 	
+2 g
+Kartoffel 		
+90 g
+Käse 	
+25 g
+Knäckebrot 		
+10 g
+Knoblauchzehe 	
+3 g
+Knollensellerie 	
+652 g
+Kohlrabi 		
+265 g
+Kopfkohl 	
+540 g
+Kümmel 	
+1 g
+Lauchzwiebel 	
+19 g
+Leinsamen 
+7 g
+Mandarine 	
+125 g
+Clementine 
+125 g
+Mandel 	
+1 g
+Mango 	
+250 g
+Marmelade 	
+20 g
+Mehl 	
+105 g
+Stärkemehl
+10 g
+Milch 
+150 ml
+Sahne 	
+1 g
+Möhre 
+62 g
+Karotte 	 	
+62 g
+Olive 
+0.5 g
+Orange 	
+150 g
+Paprika 	
+155 g
+Petersilie
+60 g
+Pfirsich 	
+100 g
+Porree	
+157 g
+Lauch
+157 g
+Quark 
+40 g
+Radicchio 
+267 g
+Radieschen 
+50 g
+Risotto 
+15 g
+Reis 
+15 g
+Roastbeef 	
+30 g
+Rosenkohl 	
+12 g
+Rosinen 	
+15 g
+Sultaninen 	
+15 g
+Rote Beete 	
+135 g
+Rotkohl
+1200
+Salami 	
+20 g
+Salat 	
+558 g
+Salatgurke 		
+550 g
+Gurke 		
+550 g
+Salz 		
+1 g
+Schalotte 	
+20 g
+Schinken 		
+25 g
+Senf 	
+10 g
+Sesam 		
+3 g
+Süßkartoffel  	
+310 g
+Tomate 
+100 g
+Vanillezucker 
+8 g
+Vanille  	
+1 g
+Toastbrot
+30 g
+Weißbrot  	
+30 g
+Weißkohl
+1630 g
+Wirsingkohl 
+890 g
+Würfelzucker 		
+4 g
+Zimt 	
+2 g
+Zitrone 	
+80 g
+Zitronensaft 	 	
+30 g
+Zucchini 		
+210 g
+Zucker 
+5 g
+Zuckerrübensirup 	
+5g
+Zwieback 	
+8 g
