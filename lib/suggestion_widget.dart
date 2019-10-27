@@ -28,7 +28,7 @@ class SuggestionWidget extends StatelessWidget {
           ),
           new Container(
             margin: const EdgeInsets.only(right: 16.0),
-            child: new CircleAvatar(child: new Text((suggestion.reducedEmissions/100).toStringAsFixed(0))),
+            child: new CircleAvatar(child: new Text((suggestion.reducedEmissions/100).toStringAsFixed(1))),
           ),
           new Column(
             crossAxisAlignment: CrossAxisAlignment.start,

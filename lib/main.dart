@@ -68,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
       List<List<dynamic>> _csv =
-          const CsvToListConverter(fieldDelimiter: ',')
+          const CsvToListConverter(fieldDelimiter: ',', eol: "\n")
               .convert(output);
       for (List<dynamic> x in _csv) {
         print(x);
