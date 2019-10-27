@@ -42,13 +42,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   // Some controllers to control UI elements
   final TextEditingController _textController = new TextEditingController();
+  final TextEditingController _textControllerTotalCart = new TextEditingController();
   final List<ShoppingListItemWidget> _items = <ShoppingListItemWidget>[];
   Map<String, List<String>> _categories = new HashMap();
   int _selectedIndex = 0;
 
+  List<String> shoppingList = <String>[];
+
   //List<ProductCarbonData> _products = <ProductCarbonData>[];
   Map<String, ProductCarbonData> _products = new HashMap();
   List<ProductListWidget> _productWidgets = <ProductListWidget>[];
+
+  List<SuggestionWidget> _suggestionWidgets = <SuggestionWidget>[];
 
   Future<String> loadAsset(String path) async {
     //here comes the list which we read in
@@ -58,8 +63,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     rootBundle.loadString('data/products.csv').then((dynamic output) {
-      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',').convert(output);
-
+      List<List<dynamic>> _csv = const CsvToListConverter(fieldDelimiter: ',', eol: '\n').convert(output);
+      for(List<dynamic> x in _csv) {
+        print(x);
+      }
       setState(() {
         for (var i = 0; i < _csv.length; i++) {
 
@@ -99,15 +106,27 @@ class _MyHomePageState extends State<MyHomePage> {
 
   }
 
+  void _createSuggestionWidgets(List<Suggestion> inSuggs){
+    SuggestionWidget myWidget;
+
+    for(Suggestion sug in inSuggs) {
+      myWidget = new SuggestionWidget(sug);
+      _suggestionWidgets.add(myWidget);
+    }
+  }
+
   void _handleSubmitted(String text) {
     //get list of suggestions like this
-    List<String> inputProducts = <String>[];
+    //List<String> inputProducts = <String>[];
 
-    inputProducts.add("Butter");
-    inputProducts.add("Mango");
-    List<Suggestion> suggs = getSuggestions(inputProducts, _products, _categories);
+    shoppingList.add(text);
+    List<Suggestion> suggs = getSuggestions(shoppingList, _products, _categories);
+    print(suggs[0].reducedEmissions);
+
+    _createSuggestionWidgets(suggs);
 
     _textController.clear();
+    _textControllerTotalCart.text = "Immer noch";
     if (_products.containsKey(text)) {
       ShoppingListItemWidget item = new ShoppingListItemWidget(text);
     setState(() {
@@ -130,6 +149,11 @@ class _MyHomePageState extends State<MyHomePage> {
       children: <Widget>[
         new Container(
           decoration: new BoxDecoration(color: Theme.of(context).cardColor),
+          child: _buildTotalCartEmissions(),
+        ),
+        new Divider(height: 1.0),
+        new Container(
+          decoration: new BoxDecoration(color: Theme.of(context).cardColor),
           child: _buildTextComposer(),
         ),
         new Divider(height: 1.0),
@@ -145,6 +169,13 @@ class _MyHomePageState extends State<MyHomePage> {
           decoration: new BoxDecoration(
               color: Theme.of(context).cardColor),
           child: new Text("Vorschläge"),
+        ),
+        new Flexible(
+          child: new ListView.builder(
+            padding: new EdgeInsets.all(8.0),
+            itemBuilder: (_, int index) => _suggestionWidgets[index],
+            itemCount: _suggestionWidgets.length,
+          ),
         ),
 
       ],
@@ -238,6 +269,29 @@ class _MyHomePageState extends State<MyHomePage> {
             child: new IconButton(
                 icon: new Icon(Icons.add),
                 onPressed: () => _handleSubmitted(_textController.text)),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildTotalCartEmissions() {
+    return new Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8.0),
+      child: new Row(
+        children: <Widget>[
+          new Flexible(
+            child: new TextField(
+              enabled: false,
+              decoration: new InputDecoration.collapsed(
+                  hintText: "Co2 Summe eingespart"),
+            ),
+          ),
+          new Flexible(
+            //margin: new EdgeInsets.symmetric(horizontal: 4.0),
+            child: new TextField(
+                controller: _textControllerTotalCart,
+                enabled: false,),
           ),
         ],
       ),
