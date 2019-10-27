@@ -4,10 +4,13 @@ import 'package:flutter/widgets.dart';
 import 'carbonHandler.dart';
 
 class SuggestionWidget extends StatelessWidget {
+  Function callback;
+
   Suggestion suggestion;
 
-  SuggestionWidget(Suggestion inSug) {
+  SuggestionWidget(Suggestion inSug, Function inCallback) {
     suggestion = inSug;
+    callback = inCallback;
   }
 
   @override
@@ -18,6 +21,12 @@ class SuggestionWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           new Container(
+            margin: new EdgeInsets.symmetric(horizontal: 4.0),
+            child: new IconButton(
+                icon: new Icon(Icons.check),
+                onPressed: () => _handleAccept(suggestion)),
+          ),
+          new Container(
             margin: const EdgeInsets.only(right: 16.0),
             child: new CircleAvatar(child: new Text(suggestion.reducedEmissions.toString())),
           ),
@@ -27,6 +36,7 @@ class SuggestionWidget extends StatelessWidget {
               new Container(
                 margin: const EdgeInsets.only(top: 5.0),
                 child: new Text(suggestion.old + " --> " + suggestion.sugg),
+
               ),
             ],
           ),
@@ -44,6 +54,10 @@ class SuggestionWidget extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  _handleAccept(Suggestion suggestion) {
+    callback(suggestion);
   }
 
   _handleAdd() {
