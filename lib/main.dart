@@ -85,10 +85,25 @@ class _MyHomePageState extends State<MyHomePage> {
   void _createProductWidgets(){
     ProductListWidget myWidget;
 
-    for(String p in _products.keys) {
-      myWidget = new ProductListWidget(p);
+    /*for(String p in _products.keys) {
+      ProductCarbonData product = _products[p];
+      myWidget = new ProductListWidget(p, product.productCategory, product.emissions);
       _productWidgets.add(myWidget);
+    }*/
+    for(String category in _categories.keys) {
+      String first = _categories[category][0];
+      List<ProductListWidget> listForCategory = new List();
+      for(String productKey in _categories[category]) {
+        ProductCarbonData product = _products[productKey];
+        myWidget = new ProductListWidget(productKey, product.productCategory, product.emissions);
+        listForCategory.add(myWidget);
+      }
+      listForCategory.sort((a,b) => b.productListItem.co2.compareTo(a.productListItem.co2));
+      for(ProductListWidget widget in listForCategory) {
+        _productWidgets.add(widget);
+      }
     }
+
   }
 
   void _createSuggestionWidgets(List<Suggestion> inSuggs){
