@@ -30,7 +30,7 @@ class SuggestionWidget extends StatelessWidget {
               ),
             ],
           ),
-          new Container(
+          /*new Container(
             margin: new EdgeInsets.symmetric(horizontal: 4.0),
             child: new IconButton(
                 icon: new Icon(Icons.add_circle_outline),
@@ -40,7 +40,7 @@ class SuggestionWidget extends StatelessWidget {
             child: new IconButton(
                 icon: new Icon(Icons.remove_circle_outline),
                 onPressed: () => _handleRemove()),
-          ),
+          ),*/
         ],
       ),
     );
