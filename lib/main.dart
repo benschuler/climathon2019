@@ -171,7 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   String _updateCartEmissions() {
-    String output = savedEmissions.toString() + " Kg Co2";
+    String output = savedEmissions.toStringAsFixed(2) + " Kg Co2";
 
     return output;
   }
